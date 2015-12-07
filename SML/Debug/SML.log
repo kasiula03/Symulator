@@ -1,0 +1,36 @@
+﻿Build started 2015-12-07 15:53:34.
+     1>Project "E:\Git\Symulator\SML\SML.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         E:\Programy\Visual Studio 2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Engine.cpp Game.cpp Player.cpp Population.cpp main.cpp
+         main.cpp
+         Population.cpp
+     1>e:\git\symulator\sml\population.cpp(12): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>e:\git\symulator\sml\population.cpp(14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         Player.cpp
+     1>e:\git\symulator\sml\player.cpp(110): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+     1>e:\git\symulator\sml\player.cpp(111): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+     1>e:\git\symulator\sml\player.cpp(142): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+     1>e:\git\symulator\sml\player.cpp(146): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+         Game.cpp
+     1>e:\git\symulator\sml\game.cpp(55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>e:\git\symulator\sml\game.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>e:\git\symulator\sml\game.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+         Engine.cpp
+     1>e:\git\symulator\sml\engine.cpp(44): warning C4101: 'mouseX': unreferenced local variable
+     1>e:\git\symulator\sml\engine.cpp(44): warning C4101: 'mouseY': unreferenced local variable
+         Generating Code...
+       Link:
+         E:\Programy\Visual Studio 2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Git\Symulator\Debug\SML.exe" /INCREMENTAL /NOLOGO "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\Git\Symulator\Debug\SML.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Git\Symulator\Debug\SML.lib" /MACHINE:X86 Debug\Engine.obj
+         Debug\Game.obj
+         Debug\GlobalObjects.obj
+         Debug\Ground.obj
+         Debug\HumanStatistic.obj
+         Debug\main.obj
+         Debug\Player.obj
+         Debug\Population.obj
+         SML.vcxproj -> E:\Git\Symulator\Debug\SML.exe
+     1>Done Building Project "E:\Git\Symulator\SML\SML.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.20
