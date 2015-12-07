@@ -14,13 +14,13 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 		MessageBox(NULL, "Texture not found", "Error", NULL);
 		return;
 	}
-	this->stats = HumanStatistic(_name, _lname, _gender, _age);
+	//this->stats = HumanStatistic(_name, _lname, _gender, _age);
 	sprite.setTexture(texture);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
 
 	
-	visibleStat = true;
+	visibleStat = false;
 	status = STOJ;
 	direction = Back;
 	frame = 0;
@@ -61,8 +61,8 @@ void Human::draw(sf::RenderTarget &target, sf::RenderStates states) const
 	//target.draw(EyesShot);
 	target.draw(sprite);
 	//target.draw(HumanColision);
-	//if (visibleStat == true)
-		//target.draw(stats);
+	if (visibleStat == true)
+		target.draw(stats);
 }
 
 void Human::update()

@@ -13,6 +13,7 @@ class Human;
 class HumanStatistic : public sf::Drawable, sf::Transformable
 {
 	friend class Human;
+	friend class Engine;
 	
 	string surename, lastname, gender;
 	int age;
@@ -21,7 +22,7 @@ class HumanStatistic : public sf::Drawable, sf::Transformable
 
 	bool visible;
 
-	Font fontt;
+	static sf::Font font;
 
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };

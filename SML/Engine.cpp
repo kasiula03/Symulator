@@ -5,8 +5,10 @@ using namespace sf;
 using namespace std;
 
 
+
 Engine::Engine(sf::RenderWindow &win)
 {
+	
 	if (!font.loadFromFile("data/Mecha.ttf"))
 	{
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
@@ -17,6 +19,7 @@ Engine::Engine(sf::RenderWindow &win)
 	runEngine(win);
 
 }
+
 
 
 Engine::~Engine(void)
@@ -77,6 +80,7 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 				if (Keyboard::isKeyPressed(Keyboard::W))
 				{
 					cout << "move" << endl;
+					player.visibleStat = true;
 					//player.idz();
 
 				}

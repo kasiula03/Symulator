@@ -1,0 +1,28 @@
+﻿Build started 2015-12-07 23:33:03.
+     1>Project "E:\Git\Symulator\SML\SML.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         E:\Programy\Visual Studio 2015\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Engine.cpp Game.cpp main.cpp
+         Engine.cpp
+     1>Engine.cpp(44): warning C4101: 'mouseX': unreferenced local variable
+     1>Engine.cpp(44): warning C4101: 'mouseY': unreferenced local variable
+         Game.cpp
+     1>Game.cpp(55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>Game.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>Game.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+         main.cpp
+       Link:
+         E:\Programy\Visual Studio 2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Git\Symulator\Release\SML.exe" /NOLOGO "sfml-audio.lib" "sfml-graphics.lib" "sfml-main.lib" "sfml-network.lib" "sfml-system.lib" "sfml-window.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\Git\Symulator\Release\SML.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Git\Symulator\Release\SML.lib" /MACHINE:X86 /SAFESEH Release\Engine.obj
+         Release\Game.obj
+         Release\GlobalObjects.obj
+         Release\Ground.obj
+         Release\HumanStatistic.obj
+         Release\main.obj
+         Release\Player.obj
+         Release\Population.obj
+     1>Engine.obj : error LNK2001: unresolved external symbol "private: static class sf::Font Engine::font" (?font@Engine@@0VFont@sf@@A)
+     1>E:\Git\Symulator\Release\SML.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "E:\Git\Symulator\SML\SML.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:03.78
