@@ -26,11 +26,5 @@ private:
 	GlobalClock g_clock;
 	GlobalData g_data;
 	Font font;
-	Font createFont()
-	{
-		Font foncik;
-		font.loadFromFile("data/Mecha.ttf");
-		return foncik;
-	}
 	GlobalPopulation peoples;
 };

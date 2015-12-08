@@ -7,6 +7,7 @@ using namespace sf;
 
 #define M_PI 3.14159265358979323846
 
+
 Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja postaci
 {
 	if (!texture.loadFromFile("data/images/princess.png"))
@@ -14,7 +15,7 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 		MessageBox(NULL, "Texture not found", "Error", NULL);
 		return;
 	}
-	//this->stats = HumanStatistic(_name, _lname, _gender, _age);
+	this->stats = HumanStatistic(_name, _lname, _gender, _age);
 	sprite.setTexture(texture);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
@@ -47,6 +48,8 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 
 Human::~Human()
 {
+	cout << "USMIERCENIE!" << endl;
+	cout << stats.surename << endl;
 }
 
 Vector2f Human::getPosition()
@@ -60,13 +63,24 @@ void Human::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 	//target.draw(EyesShot);
 	target.draw(sprite);
-	//target.draw(HumanColision);
+	target.draw(HumanColision);
 	if (visibleStat == true)
 		target.draw(stats);
 }
 
-void Human::update()
+void Human::update(Vector2f mysz)
 {
+	if (HumanColision.getGlobalBounds().contains(mysz) && Mouse::isButtonPressed(Mouse::Left))
+	{
+		if (visibleStat == false)
+		{
+			stats.Surename.setPosition(HumanColision.getPosition());
+			stats.Lastname.setPosition(HumanColision.getPosition().x , HumanColision.getPosition().y + 30);
+			stats.Gender.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 60);
+			stats.Age.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 90);
+			visibleStat = true;
+		}
+	}
 	if (inStage == true)
 	{
 		goToPoint(targetToGo);
@@ -83,6 +97,7 @@ void Human::update()
 		else if (direction == Back) sprite.setTextureRect(IntRect(frame * 64, 0, 64, 64));
 		anim_clock.restart();
 	}
+	
 
 }
 

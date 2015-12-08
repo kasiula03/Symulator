@@ -11,6 +11,7 @@ class Human : public sf::Drawable, sf::Transformable
 {
 public:
 	friend class Engine;
+	friend class HumanStatistic;
 	friend class GlobalPopulation;
 	Human(string="Aga",string="Nowak",string="Kobieta",int=18);
 	~Human();
@@ -19,11 +20,12 @@ public:
 	sf::Vector2f getPosition();
 	Status getStatus();
 
-	void update();
+	void update(sf::Vector2f);
 	void setRotation(float,float);
 	void stop();
 	void idz();
 	void goToPoint(sf::Vector2f);
+	
 	
 protected:
 	int klatka_animacji;

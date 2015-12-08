@@ -28,8 +28,20 @@ HumanStatistic::HumanStatistic(string _name, string _lname, string _gender, int 
 	Surename.setFont(font);
 	Surename.setPosition(10,10);
 	
-	//Surename.setString(surename.c_str());
-	//Lastname.setString(lastname.c_str());
+	Lastname.setString(lastname.c_str());
+	Lastname.setStyle(Text::Bold);
+	Lastname.setFont(font);
+	Lastname.setPosition(20, 20);
+
+	Gender.setString(gender.c_str());
+	Gender.setStyle(Text::Bold);
+	Gender.setFont(font);
+	Gender.setPosition(30, 30);
+
+	Age.setString(to_string(age));
+	Age.setStyle(Text::Bold);
+	Age.setFont(font);
+	Age.setPosition(40, 40);
 }
 
 
@@ -37,9 +49,9 @@ void HumanStatistic::draw(sf::RenderTarget &target, sf::RenderStates states) con
 {
 	states.transform *= getTransform();
 
-	target.draw(this->Surename);
+	target.draw(Surename);
 	target.draw(Lastname);
-	//target.draw(Gender);
+	target.draw(Gender);
 	target.draw(Age);
 
 }

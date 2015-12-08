@@ -14,7 +14,7 @@ Engine::Engine(sf::RenderWindow &win)
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
 		return;
 	}
-	player = Human();
+	player = Human("Ania","Kowal","Kobieta",25);
 	peoples = GlobalPopulation(5);
 	runEngine(win);
 
@@ -80,7 +80,7 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 				if (Keyboard::isKeyPressed(Keyboard::W))
 				{
 					cout << "move" << endl;
-					player.visibleStat = true;
+					//player.visibleStat = true;
 					//player.idz();
 
 				}
@@ -159,8 +159,9 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		{
 			g_data.UpdateData();
 		}
-		player.update(); //aktualizacja polozenia gracza
-		peoples.update();
+		//cout << mysz.x << "\t" << mysz.y << "\t" << player.HumanColision.getPosition().x << "\ " << player.HumanColision.getPosition().y << "\t" << player.HumanColision.getGlobalBounds().left << "\t" << player.HumanColision.getGlobalBounds().top << endl;
+		player.update(mysz); //aktualizacja polozenia gracza
+		peoples.update(mysz);
 
 		window.clear();
 		window.draw(ground);

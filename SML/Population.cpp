@@ -31,8 +31,8 @@ void GlobalPopulation::draw(sf::RenderTarget &target, sf::RenderStates states) c
 	}
 	//target.draw(HumanColision);
 }
-void GlobalPopulation::update()
+void GlobalPopulation::update(sf::Vector2f mysz)
 {
 	for (int i = 0; i < this->x; i++)
-		peoples[i].update();
+		peoples[i].update(mysz);
 }
