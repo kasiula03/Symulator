@@ -13,7 +13,8 @@ public:
 	friend class Engine;
 	friend class HumanStatistic;
 	friend class GlobalPopulation;
-	Human(string="Aga",string="Nowak",string="Kobieta",int=18);
+	Human(string,string,string,int);
+	Human();
 	~Human();
 
 	enum Status { IDZ, STOJ, Forward, Back};

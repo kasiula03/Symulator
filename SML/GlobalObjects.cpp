@@ -6,6 +6,7 @@ using namespace sf;
 
 string temp;
 
+
 void GlobalClock::SetTexts() //Ustawienie czasu (i opcji jego przyspieszenia) w prawym gornym rogu
 {
 	textTime.setString("00:00:00");

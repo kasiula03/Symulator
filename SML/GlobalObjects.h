@@ -43,3 +43,12 @@ private:
 	Text Day, Month, Year;
 	void SetTexts();
 };
+
+class listOfNames
+{
+public:
+	string namesWomen[11] = { "Sylwia","Klaudia","Monika","Agata","Pola","Gabriela","Justyna","Ola","Katherine","Monika","Urszula" };
+	//static string * namesWomen;
+	//static string * namesMen;
+	
+};

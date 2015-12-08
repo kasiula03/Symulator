@@ -2,7 +2,9 @@
 #include <Windows.h>
 #include <math.h>
 #include <iostream>
-
+#include "GlobalObjects.h"
+#include <cstdlib>
+#include <ctime>
 using namespace sf;
 
 #define M_PI 3.14159265358979323846
@@ -45,7 +47,46 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	EyesShot.setPosition(1366 / 2, 768 / 2);
 	
 }
+Human::Human()
+{
+	
+	if (!texture.loadFromFile("data/images/princess.png"))
+	{
+		MessageBox(NULL, "Texture not found", "Error", NULL);
+		return;
+	}
+	listOfNames names;
+	int i = rand() % 11;
+	cout << "Wylosowano" << i << endl;
+	this->stats = HumanStatistic(names.namesWomen[i], "Nowak", "Kobieta", 18);
+	sprite.setTexture(texture);
+	sprite.setTextureRect(IntRect(0, 0, 64, 64));
+	sprite.setOrigin(32, 32);
 
+
+	visibleStat = false;
+	status = STOJ;
+	direction = Back;
+	frame = 0;
+	speed = 0.5;
+	rotated = false;
+	inStage = false;
+	direc = 0;
+	sprite.setPosition(1366 / 2, 768 / 2);
+	anim_clock.restart();
+
+	HumanColision.setSize(Vector2f(60, 70));
+
+	HumanColision.setFillColor(sf::Color(255, 232, 54, 120));
+	HumanColision.setOrigin(32, 32);
+	HumanColision.setPosition(1366 / 2, 768 / 2);
+
+	EyesShot.setSize(Vector2f(250, 600));
+	EyesShot.setFillColor(sf::Color(255, 232, 54, 120));
+	//EyesShot.setOrigin(125, (768/2) + 230 );
+	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
+	EyesShot.setPosition(1366 / 2, 768 / 2);
+}
 Human::~Human()
 {
 	cout << "USMIERCENIE!" << endl;
@@ -80,6 +121,11 @@ void Human::update(Vector2f mysz)
 			stats.Age.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 90);
 			visibleStat = true;
 		}
+	}
+	if (Keyboard::isKeyPressed(Keyboard::Return))
+	{
+		if (visibleStat == true)
+			visibleStat = false;
 	}
 	if (inStage == true)
 	{
