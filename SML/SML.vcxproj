@@ -22,6 +22,7 @@
     <ProjectGuid>{1B00E862-7F2E-421F-8F2F-E72DC59CDB68}</ProjectGuid>
     <RootNamespace>SML</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>Symulator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
