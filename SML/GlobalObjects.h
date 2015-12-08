@@ -48,6 +48,7 @@ class listOfNames
 {
 public:
 	string namesWomen[11] = { "Sylwia","Klaudia","Monika","Agata","Pola","Gabriela","Justyna","Ola","Katherine","Monika","Urszula" };
+	string SureNames[9] = { "Nowak","Kowal","Burzynski","Hanusiak","Bogusz","Jaworski","Typo","Sarmanczyk","Nacz" };
 	//static string * namesWomen;
 	//static string * namesMen;
 	

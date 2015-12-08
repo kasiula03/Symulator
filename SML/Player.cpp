@@ -57,8 +57,9 @@ Human::Human()
 	}
 	listOfNames names;
 	int i = rand() % 11;
-	cout << "Wylosowano" << i << endl;
-	this->stats = HumanStatistic(names.namesWomen[i], "Nowak", "Kobieta", 18);
+	int j = rand() % 9;
+	int _age = rand() % 12 +16;
+	this->stats = HumanStatistic(names.namesWomen[i], names.SureNames[j], "Kobieta", _age);
 	sprite.setTexture(texture);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
@@ -104,7 +105,7 @@ void Human::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 	//target.draw(EyesShot);
 	target.draw(sprite);
-	target.draw(HumanColision);
+	//target.draw(HumanColision);
 	if (visibleStat == true)
 		target.draw(stats);
 }
@@ -116,9 +117,10 @@ void Human::update(Vector2f mysz)
 		if (visibleStat == false)
 		{
 			stats.Surename.setPosition(HumanColision.getPosition());
-			stats.Lastname.setPosition(HumanColision.getPosition().x , HumanColision.getPosition().y + 30);
-			stats.Gender.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 60);
-			stats.Age.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 90);
+			stats.Lastname.setPosition(HumanColision.getPosition().x , HumanColision.getPosition().y + 25);
+			stats.Gender.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 50);
+			stats.Age.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 75);
+			stats.background.setPosition(HumanColision.getPosition().x + 30,HumanColision.getPosition().y + 25);
 			visibleStat = true;
 		}
 	}
@@ -224,7 +226,6 @@ void Human::goToPoint(Vector2f Point)
 
 	if (disty <= 5 && distx <= 5 && disty > -1 && distx > -1)
 	{
-		//std::cout << "jest" << std::endl;
 		stop();
 		rotated = false;
 		inStage = false;

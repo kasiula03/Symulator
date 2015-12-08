@@ -18,6 +18,7 @@ class HumanStatistic : public sf::Drawable, sf::Transformable
 	string surename, lastname, gender;
 	int age;
 	Text Surename, Lastname, Gender, Age;
+	RectangleShape background;
 	HumanStatistic(string="Aga",string="Nowak",string="Kobieta",int=18);
 
 	bool visible;
