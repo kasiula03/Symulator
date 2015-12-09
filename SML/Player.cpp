@@ -9,6 +9,7 @@ using namespace sf;
 
 #define M_PI 3.14159265358979323846
 
+float Human::speed;
 
 Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja postaci
 {
@@ -45,7 +46,7 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	//EyesShot.setOrigin(125, (768/2) + 230 );
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
-	
+
 }
 Human::Human()
 {

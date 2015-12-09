@@ -53,3 +53,23 @@ public:
 	//static string * namesMen;
 	
 };
+
+template<typename _type> class Node
+{
+public:
+	_type object;
+	int which;
+	Node * prev;
+	Node * next;
+};
+
+template<typename _typ> class list
+{
+	friend class GlobalPopulation;
+	Node<_typ> * head;
+public:
+	void addNode(_typ);
+	void deleteNode();
+	void findNode(int);
+
+};

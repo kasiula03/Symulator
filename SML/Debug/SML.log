@@ -1,27 +1,20 @@
-﻿Build started 2015-12-08 14:37:59.
-     1>Project "E:\Git\Symulator\SML\SML.vcxproj" on node 2 (Build target(s)).
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SML.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-     1>ClCompile:
-         E:\Programy\Visual Studio 2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GlobalObjects.cpp Ground.cpp HumanStatistic.cpp
-         HumanStatistic.cpp
-     1>e:\git\symulator\sml\humanstatistic.cpp(53): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-     1>e:\git\symulator\sml\humanstatistic.cpp(54): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Ground.cpp
-         GlobalObjects.cpp
-       Link:
-         E:\Programy\Visual Studio 2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Git\Symulator\Debug\Symulator.exe" /INCREMENTAL /NOLOGO "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\Git\Symulator\Debug\Symulator.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Git\Symulator\Debug\Symulator.lib" /MACHINE:X86 Debug\Engine.obj
-         Debug\Game.obj
-         Debug\GlobalObjects.obj
-         Debug\Ground.obj
-         Debug\HumanStatistic.obj
-         Debug\main.obj
-         Debug\Player.obj
-         Debug\Population.obj
-         SML.vcxproj -> E:\Git\Symulator\Debug\Symulator.exe
-     1>Done Building Project "E:\Git\Symulator\SML\SML.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.57
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SML.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Population.cpp
+e:\git\symulator\sml\population.cpp(12): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\population.cpp(14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  main.cpp
+e:\git\symulator\sml\main.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  HumanStatistic.cpp
+e:\git\symulator\sml\humanstatistic.cpp(53): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+e:\git\symulator\sml\humanstatistic.cpp(54): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  Game.cpp
+e:\git\symulator\sml\game.cpp(55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\game.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\game.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Engine.cpp
+e:\git\symulator\sml\engine.cpp(47): warning C4101: 'mouseX': unreferenced local variable
+e:\git\symulator\sml\engine.cpp(47): warning C4101: 'mouseY': unreferenced local variable
+  Generating Code...
+  SML.vcxproj -> E:\Git\Symulator\Debug\Symulator.exe

@@ -12,6 +12,7 @@ class Human;
 
 class HumanStatistic : public sf::Drawable, sf::Transformable
 {
+	friend class GlobalPopulation;
 	friend class Human;
 	friend class Engine;
 	

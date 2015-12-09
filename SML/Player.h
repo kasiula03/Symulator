@@ -43,7 +43,7 @@ private:
 	Status direction;
 	int direc;
 
-	float speed;
+	static float speed;
 	size_t frame;
 	float vx, vy;
 

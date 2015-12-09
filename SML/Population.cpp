@@ -20,6 +20,12 @@ GlobalPopulation::GlobalPopulation(int x)
 	}
 
 }
+void GlobalPopulation::CreateHuman()
+{
+	
+	
+	
+}
 void GlobalPopulation::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
