@@ -3,6 +3,8 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 #include "HumanStatistic.h"
+//#include "GlobalObjects.h"
+#include "TextureLoader.h"
 
 using namespace std;
 
@@ -32,12 +34,13 @@ protected:
 	int klatka_animacji;
 
 private:
+	TextureLoader allTextures;
 	sf::Sprite sprite;
 	sf::Texture texture;
 	sf::RectangleShape EyesShot; //pole widzenia
 	sf::RectangleShape HumanColision; //kolizja
 	HumanStatistic stats;
-
+	
 	sf::RectangleShape du;
 	Status status;
 	Status direction;

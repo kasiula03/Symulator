@@ -80,7 +80,7 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 				if (Keyboard::isKeyPressed(Keyboard::W))
 				{
 					cout << "move" << endl;
-					peoples.CreateHuman();
+					//peoples.CreateHuman();
 					//player.visibleStat = true;
 					//player.idz();
 

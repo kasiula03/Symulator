@@ -27,4 +27,5 @@ private:
 	GlobalData g_data;
 	Font font;
 	GlobalPopulation peoples;
+	
 };

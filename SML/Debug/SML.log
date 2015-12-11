@@ -1,20 +1,5 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SML.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Population.cpp
-e:\git\symulator\sml\population.cpp(12): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-e:\git\symulator\sml\population.cpp(14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
-  main.cpp
-e:\git\symulator\sml\main.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  HumanStatistic.cpp
-e:\git\symulator\sml\humanstatistic.cpp(53): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-e:\git\symulator\sml\humanstatistic.cpp(54): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-  Game.cpp
-e:\git\symulator\sml\game.cpp(55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-e:\git\symulator\sml\game.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\git\symulator\sml\game.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Engine.cpp
-e:\git\symulator\sml\engine.cpp(47): warning C4101: 'mouseX': unreferenced local variable
-e:\git\symulator\sml\engine.cpp(47): warning C4101: 'mouseY': unreferenced local variable
-  Generating Code...
+e:\git\symulator\sml\population.cpp(17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\population.cpp(19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SML.vcxproj -> E:\Git\Symulator\Debug\Symulator.exe

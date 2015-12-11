@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Player.h"
-
+#include "GlobalObjects.h"
 class GlobalPopulation : public sf::Drawable, sf::Transformable
 {
 	friend class Engine;
 	int x;
-	Human * peoples;
+	list listOfPeople;
 public:
 	GlobalPopulation(int=0);
 	void CreateHuman();

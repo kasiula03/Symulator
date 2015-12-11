@@ -13,13 +13,9 @@ float Human::speed;
 
 Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja postaci
 {
-	if (!texture.loadFromFile("data/images/princess.png"))
-	{
-		MessageBox(NULL, "Texture not found", "Error", NULL);
-		return;
-	}
+	
 	this->stats = HumanStatistic(_name, _lname, _gender, _age);
-	sprite.setTexture(texture);
+	sprite.setTexture(allTextures.textures[0]);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
 
@@ -51,17 +47,12 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 Human::Human()
 {
 	
-	if (!texture.loadFromFile("data/images/princess.png"))
-	{
-		MessageBox(NULL, "Texture not found", "Error", NULL);
-		return;
-	}
 	listOfNames names;
 	int i = rand() % 11;
 	int j = rand() % 9;
 	int _age = rand() % 12 +16;
 	this->stats = HumanStatistic(names.namesWomen[i], names.SureNames[j], "Kobieta", _age);
-	sprite.setTexture(texture);
+	sprite.setTexture(allTextures.textures[0]);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
 

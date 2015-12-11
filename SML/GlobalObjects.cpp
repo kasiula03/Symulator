@@ -148,8 +148,8 @@ void GlobalData::draw(sf::RenderTarget &target, sf::RenderStates states) const
 	target.draw(this->Year);
 
 }
-
-template<typename _typ> void list<_typ>::addNode(_typ object)
+/*
+template<typename _typ> void list<_typ>::addNode(_typ & const object)
 {
 	Node<_typ> * temp = head;
 	Node<_typ> * newNode = new Node;
@@ -168,5 +168,36 @@ template<typename _typ> void list<_typ>::addNode(_typ object)
 		}
 		temp->next = newNode;
 		temp->next->prev = temp;
+	}
+}
+*/
+
+list::list()
+{
+	head = NULL;
+}
+
+void list::addNode(Human & temp)
+{
+	Node * tempN = head;
+	Node * newNode = new Node;
+	newNode->next = NULL;
+	newNode->object = temp;
+	if (tempN == NULL)
+	{
+		head = newNode;
+
+	}
+	else
+	{
+		while (tempN->next)
+		{
+			cout << "lista";
+			tempN = tempN->next;
+		}
+		tempN->next = newNode;
+		//tempN->next->prev = tempN;
+		//tempN->next->next == NULL;
+		
 	}
 }
