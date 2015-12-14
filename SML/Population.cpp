@@ -1,15 +1,17 @@
 #include "Population.h"
 #include <iostream>
 
+
+
 GlobalPopulation::GlobalPopulation(int x)
 {
 	this->x = x;
 
 	Human nowy("d","d","d",5);
 	for (int i = 0; i < x; i++)
-		listOfPeople.addNode(nowy);
+		listOfPeople.addNode(nowy); //dodanie do listy ludzi
 	sf::Vector2f vec;
-	Node * temp = listOfPeople.head;
+	Node<Human> * temp = listOfPeople.head;
 	int i = 0;
 	while(temp)
 	{
@@ -17,31 +19,32 @@ GlobalPopulation::GlobalPopulation(int x)
 			vec = sf::Vector2f(i * 100 , i * 10);
 		else
 			vec = sf::Vector2f(i * 100 , i * 50);
-		std::cout << vec.x << vec.y << std::endl;
+		//ustawienie pierwszego puntu docelowego
 		temp->object.targetToGo = vec;
 		temp->object.inStage = true;
 		temp->object.goToPoint(vec);
 		temp = temp->next;
 		i++;
-		//peoples[i].targetToGo = vec;
-		//peoples[i].inStage = true;
-		//peoples[i].goToPoint(vec);
-		std::cout << "stworzyl sie" << std::endl;
 	}
 
 }
 void GlobalPopulation::CreateHuman()
 {
+	listOfPeople.addNode(Human());
+	Node<Human> * temp = listOfPeople.head;
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
 	
-	
-	
+	temp->object.goToPoint(Vector2f(1, 1));
 }
 void GlobalPopulation::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
-	Node * temp = listOfPeople.head;
+	Node<Human> * temp = listOfPeople.head;
 	//target.draw(EyesShot);
-	while(temp)
+	while(temp) 
 	{
 		target.draw(temp->object);
 		temp = temp->next;
@@ -51,7 +54,7 @@ void GlobalPopulation::draw(sf::RenderTarget &target, sf::RenderStates states) c
 }
 void GlobalPopulation::update(sf::Vector2f mysz)
 {
-	Node * temp = listOfPeople.head;
+	Node<Human> * temp = listOfPeople.head;
 	while(temp)
 	{
 		temp->object.update(mysz);

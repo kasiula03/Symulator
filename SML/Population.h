@@ -6,7 +6,7 @@ class GlobalPopulation : public sf::Drawable, sf::Transformable
 {
 	friend class Engine;
 	int x;
-	list listOfPeople;
+	list<Human> listOfPeople;
 public:
 	GlobalPopulation(int=0);
 	void CreateHuman();

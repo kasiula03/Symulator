@@ -172,32 +172,4 @@ template<typename _typ> void list<_typ>::addNode(_typ & const object)
 }
 */
 
-list::list()
-{
-	head = NULL;
-}
 
-void list::addNode(Human & temp)
-{
-	Node * tempN = head;
-	Node * newNode = new Node;
-	newNode->next = NULL;
-	newNode->object = temp;
-	if (tempN == NULL)
-	{
-		head = newNode;
-
-	}
-	else
-	{
-		while (tempN->next)
-		{
-			cout << "lista";
-			tempN = tempN->next;
-		}
-		tempN->next = newNode;
-		//tempN->next->prev = tempN;
-		//tempN->next->next == NULL;
-		
-	}
-}

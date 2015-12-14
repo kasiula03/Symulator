@@ -78,19 +78,34 @@ public:
 
 
 
-class Node
+template<typename _typ> class Node
 {
 public:
-	//Node(Human &);
-	Human object;
+	_typ object;
 	//int which;
-//	Node * prev;
 	Node * next;
 };
-class list
+
+template<typename type>class list
 {
 public:
-	Node * head;
-	list();
-	void addNode(Human &);
+	Node<type> * head;
+	list() 
+	{
+		head = NULL;
+	}
+	void addNode(type & temp)
+	{
+		Node<type> * tempN = head;
+		Node<type> * newNode = new Node<type>;
+		newNode->next = NULL;
+		newNode->object = temp;
+		if (tempN == NULL) head = newNode;
+		else
+		{
+			while (tempN->next) tempN = tempN->next;
+			tempN->next = newNode;
+
+		}
+	}
 };

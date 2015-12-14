@@ -15,7 +15,8 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 {
 	
 	this->stats = HumanStatistic(_name, _lname, _gender, _age);
-	sprite.setTexture(allTextures.textures[0]);
+	if(_gender == "Kobieta") sprite.setTexture(allTextures.textures[0]);
+	else sprite.setTexture(allTextures.textures[1]);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
 
