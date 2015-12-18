@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Player.h"
+#include "Human.h"
 #include "GlobalObjects.h"
 class GlobalPopulation : public sf::Drawable, sf::Transformable
 {

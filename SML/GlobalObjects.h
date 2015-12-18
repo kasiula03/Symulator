@@ -2,10 +2,9 @@
 
 #include <SFML\Graphics.hpp>
 #include <Windows.h>
-#include "Player.h"
+#include "Human.h"
 #include <string>
-//#include "Ground.h"
-#include "Player.h"
+
 using namespace std;
 using namespace sf;
 
@@ -29,6 +28,7 @@ private:
 	Text textTime;
 	Text Fast,Faster, NormalSpeed;
 	void SetTexts();
+	void SetSingleText(Text &, string, float, float);
 };
 
 class GlobalData : public sf::Drawable, sf::Transformable
@@ -44,6 +44,7 @@ private:
 	Font font;
 	Text Day, Month, Year;
 	void SetTexts();
+	void SetSingleText(Text &, string, float, float);
 };
 
 class listOfNames

@@ -128,7 +128,7 @@
     <ClCompile Include="HumanAI.cpp" />
     <ClCompile Include="HumanStatistic.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Human.cpp" />
     <ClCompile Include="Population.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
   </ItemGroup>
@@ -138,7 +138,7 @@
     <ClInclude Include="GlobalObjects.h" />
     <ClInclude Include="HumanAI.h" />
     <ClInclude Include="HumanStatistic.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Human.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="Population.h" />
     <ClInclude Include="TextureLoader.h" />

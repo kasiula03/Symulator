@@ -45,9 +45,6 @@
     <ClCompile Include="HumanStatistic.cpp">
       <Filter>Source Files\Human</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Human</Filter>
-    </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
@@ -63,6 +60,9 @@
     <ClCompile Include="GlobalObjects.cpp">
       <Filter>Source Files\Mechnism</Filter>
     </ClCompile>
+    <ClCompile Include="Human.cpp">
+      <Filter>Source Files\Human</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Population.h">
@@ -72,9 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HumanStatistic.h">
-      <Filter>Header Files\Human</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
       <Filter>Header Files\Human</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
@@ -91,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="GlobalObjects.h">
       <Filter>Header Files\Mechanism</Filter>
+    </ClInclude>
+    <ClInclude Include="Human.h">
+      <Filter>Header Files\Human</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

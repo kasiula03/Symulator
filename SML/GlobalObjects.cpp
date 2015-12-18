@@ -6,29 +6,23 @@ using namespace sf;
 
 string temp;
 
+void GlobalClock::SetSingleText(Text & tekst, string strText, float x, float y)
+{
+	tekst.setString(strText);
+	tekst.setFont(font);
+	tekst.setStyle(Text::Bold);
+	tekst.setPosition(x, y);
+}
 
 void GlobalClock::SetTexts() //Ustawienie czasu (i opcji jego przyspieszenia) w prawym gornym rogu
 {
-	textTime.setString("00:00:00");
-	textTime.setFont(font);
-	textTime.setStyle(Text::Bold);
-	textTime.setPosition(1366 - textTime.getGlobalBounds().width * 3, 20);
+	SetSingleText(textTime, "00:00:00", 1050, 20);
 
-	Faster.setString(" <<");
-	Faster.setFont(font);
-	Faster.setStyle(Text::Bold);
-	Faster.setPosition(1366 - textTime.getGlobalBounds().width * 5, 20);
+	SetSingleText(Faster, " << ", 900, 20);
 
-	Fast.setString(" <");
-	Fast.setFont(font);
-	Fast.setStyle(Text::Bold);
-	Fast.setPosition(1366 - textTime.getGlobalBounds().width * 4.5, 20);
+	SetSingleText(Fast, " < ", 950, 20);
 
-	NormalSpeed.setString(" I");
-	NormalSpeed.setFont(font);
-	NormalSpeed.setStyle(Text::Bold);
-	NormalSpeed.setPosition(1366 - textTime.getGlobalBounds().width * 4, 20);
-
+	SetSingleText(NormalSpeed, " I ", 1000, 20);
 }
 
 GlobalClock::GlobalClock()
@@ -82,25 +76,21 @@ void GlobalClock::draw(sf::RenderTarget &target, sf::RenderStates states) const
 	
 }
 
+void GlobalData::SetSingleText(Text & tekst, string strText, float x, float y)
+{
+	tekst.setString(strText);
+	tekst.setFont(font);
+	tekst.setStyle(Text::Bold);
+	tekst.setPosition(x, y);
+}
+
 void GlobalData::SetTexts()
 {
-	Day.setString("Day " + to_string(day));
-	Day.setFont(font);
-	Day.setStyle(Text::Bold);
-	Day.setPosition(0 + Day.getGlobalBounds().width, 20);
-	//Day.setOrigin(Day.getPosition());
+	SetSingleText(Day, "Day " + to_string(day), 20, 20);
+	
+	SetSingleText(Month, "Month " + to_string(month), 100 , 20);
 
-	Month.setString("Month " + to_string(month));
-	Month.setFont(font);
-	Month.setStyle(Text::Bold);
-	Month.setPosition(0 + Month.getGlobalBounds().width * 1.75, 20);
-	//Month.setOrigin(Month.getPosition());
-
-	Year.setString("Year " + to_string(year));
-	Year.setFont(font);
-	Year.setStyle(Text::Bold);
-	Year.setPosition(0 + Year.getGlobalBounds().width * 4, 20);
-	//Year.setOrigin(Year.getPosition());
+	SetSingleText(Year, "Year " + to_string(year), 210, 20);
 
 }
 
