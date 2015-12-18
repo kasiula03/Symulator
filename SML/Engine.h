@@ -14,10 +14,10 @@ using namespace sf;
 class Engine
 {
 public:
-	Engine(sf::RenderWindow &win);
+	Engine(RenderWindow &win);
 	~Engine(void);
 
-	void runEngine(sf::RenderWindow &window);
+	void runEngine(RenderWindow &window);
 	void UpdatePosition(int, int, float);
 	
 private:
@@ -27,5 +27,6 @@ private:
 	GlobalData g_data;
 	Font font;
 	GlobalPopulation peoples;
-	
+	void Display(RenderWindow &);
+	void MoveCamera(RenderWindow &, View &);
 };

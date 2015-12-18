@@ -20,6 +20,7 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
 
+	ID = 0;
 	
 	visibleStat = false;
 	status = STOJ;
@@ -38,26 +39,33 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	HumanColision.setOrigin(32, 32);
 	HumanColision.setPosition(1366/2, 768/2);
 	
-	EyesShot.setSize(Vector2f(250,600));
+	EyesShot.setSize(Vector2f(400,600));
 	EyesShot.setFillColor(sf::Color(255, 232, 54, 120));
 	//EyesShot.setOrigin(125, (768/2) + 230 );
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
-
 }
 Human::Human()
 {
-	
-	listOfNames names;
+	static listOfNames names;
 	int i = rand() % 11;
 	int j = rand() % 9;
 	int _age = rand() % 12 +16;
-	this->stats = HumanStatistic(names.namesWomen[i], names.SureNames[j], "Kobieta", _age);
-	sprite.setTexture(allTextures.textures[0]);
+	int k = rand() % 2;
+	if (k == 0)
+	{
+		this->stats = HumanStatistic(names.namesWomen[i], names.SureNames[j], "Kobieta", _age);
+		sprite.setTexture(allTextures.textures[0]);
+	}
+	else
+	{
+		this->stats = HumanStatistic(names.namesWomen[i], names.SureNames[j], "Mezczyzna", _age);
+		sprite.setTexture(allTextures.textures[1]);
+	}
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
-
-
+	
+	ID = 0;
 	visibleStat = false;
 	status = STOJ;
 	direction = Back;
@@ -75,11 +83,12 @@ Human::Human()
 	HumanColision.setOrigin(32, 32);
 	HumanColision.setPosition(1366 / 2, 768 / 2);
 
-	EyesShot.setSize(Vector2f(250, 600));
+	EyesShot.setSize(Vector2f(400, 600));
 	EyesShot.setFillColor(sf::Color(255, 232, 54, 120));
 	//EyesShot.setOrigin(125, (768/2) + 230 );
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
+	
 }
 Human::~Human()
 {
@@ -113,6 +122,9 @@ void Human::update(Vector2f mysz)
 			stats.Lastname.setPosition(HumanColision.getPosition().x , HumanColision.getPosition().y + 25);
 			stats.Gender.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 50);
 			stats.Age.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 75);
+			stats.ID.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 100);
+			this->stats.id = ID;
+			this->stats.ID.setString(to_string(this->stats.id));
 			stats.background.setPosition(HumanColision.getPosition().x + 30,HumanColision.getPosition().y + 25);
 			visibleStat = true;
 		}

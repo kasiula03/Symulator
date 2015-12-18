@@ -27,6 +27,7 @@ Engine::~Engine(void)
 	cout << "Destroy engine" << endl;
 }
 
+// Update pozycji tekstow daty i godziny
 void Engine::UpdatePosition(int x, int y, float speed)
 {
 	g_data.Day.move(x * speed, y * speed);
@@ -41,16 +42,11 @@ void Engine::UpdatePosition(int x, int y, float speed)
 void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 {
 	bool menu = false;
-	float SpeedMoveCamera = 10;
-	float viewY = 0;
-	float viewX = 0;
-	float mouseX, mouseY;
 	float tempSpeed = player.speed;
 	
 	while (!menu)
 	{
 		Event event;
-		//Vector2f mysz(Mouse::getPosition(window));
 		Vector2i mouseWindow = Mouse::getPosition(window);
 		Vector2f mysz = window.mapPixelToCoords(mouseWindow);
 		View view1 = window.getDefaultView();
@@ -58,18 +54,10 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		
 		while (window.pollEvent(event))
 		{
-			if (event.type == Event::KeyReleased && event.key.code == Keyboard::Escape)
-			{
-				menu = true;
-				
-				cout << "elo";
-				//player.tempRot = 0;
-			}
+			if (event.type == Event::KeyReleased && event.key.code == Keyboard::Escape) menu = true; // Wyjscie do menu
 
-			if (event.type == Event::MouseButtonPressed && event.key.code == Mouse::Left)
+			if (event.type == Event::MouseButtonPressed && event.key.code == Mouse::Left) //poruszanie sie za pomoca myszki
 			{
-				//player.targetToGo = mysz;
-				//player.inStage = true;
 				if(player.inStage == false) player.goToPoint(mysz);
 				//for (int i = 0; i < peoples.x; i++)
 					//peoples.peoples[i].goToPoint(mysz);
@@ -79,20 +67,7 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 			{
 				if (Keyboard::isKeyPressed(Keyboard::W))
 				{
-					cout << "move" << endl;
 					peoples.CreateHuman();
-					//player.visibleStat = true;
-					//player.idz();
-
-				}
-				if (Keyboard::isKeyPressed(Keyboard::D))
-				{
-					player.rotate(2);
-					//player.idz();
-				}
-				if (Keyboard::isKeyPressed(Keyboard::A))
-				{
-					player.rotate(-2);
 				}
 			}
 
@@ -103,39 +78,8 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 			}
 			if (event.type == Event::KeyPressed)
 			{
-				if (event.key.code == Keyboard::Up)
-				{
-					viewY -= SpeedMoveCamera;
-					view1.move(viewX, viewY);
-					UpdatePosition(0, -1, SpeedMoveCamera);
-					window.setView(view1);
+				MoveCamera(window,view1);
 
-				}
-				if (event.key.code == Keyboard::Down)
-				{
-					viewY += SpeedMoveCamera;
-					view1.move(viewX, viewY);
-					UpdatePosition(0, 1, SpeedMoveCamera);
-					window.setView(view1);
-
-
-				}
-				if (event.key.code == Keyboard::Left)
-				{
-					viewX -= SpeedMoveCamera;
-					view1.move(viewX, viewY);
-					UpdatePosition(-1, 0, SpeedMoveCamera);
-					window.setView(view1);
-
-
-				}
-				if (event.key.code == Keyboard::Right)
-				{
-					viewX += SpeedMoveCamera;
-					view1.move(viewX, viewY);
-					UpdatePosition(1, 0, SpeedMoveCamera);
-					window.setView(view1);
-				}
 				if (event.key.code == Keyboard::Num1)
 				{
 					g_clock.timeSpeed = 1;
@@ -160,17 +104,52 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		{
 			g_data.UpdateData();
 		}
-		//cout << mysz.x << "\t" << mysz.y << "\t" << player.HumanColision.getPosition().x << "\ " << player.HumanColision.getPosition().y << "\t" << player.HumanColision.getGlobalBounds().left << "\t" << player.HumanColision.getGlobalBounds().top << endl;
-		player.update(mysz); //aktualizacja polozenia gracza
-		peoples.update(mysz);
-
-		window.clear();
-		window.draw(ground);
-		window.draw(player);
-		window.draw(peoples);
-		window.draw(g_clock);
-		window.draw(g_data);
-		window.display();
+		player.update(mysz); //aktualizacja polozenia gracza(testowego)
+		peoples.update(mysz); //aktualizacja wszystkich
+		Display(window);
 	}
 }
 
+void Engine::Display(RenderWindow & window)
+{
+	window.clear();
+	window.draw(ground);
+	window.draw(player);
+	window.draw(peoples);
+	window.draw(g_clock);
+	window.draw(g_data);
+	window.display();
+}
+void Engine::MoveCamera(RenderWindow & window,View & view1)
+{
+	static float viewX = 0;
+	static float viewY = 0;
+	if (Keyboard::isKeyPressed(Keyboard::Up))
+	{
+		viewY -= 10;
+		view1.move(viewX, viewY);
+		UpdatePosition(0, -1, 10);
+		window.setView(view1);
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Down))
+	{
+		viewY += 10;
+		view1.move(viewX, viewY);
+		UpdatePosition(0, 1, 10);
+		window.setView(view1);
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Left))
+	{
+		viewX -= 10;
+		view1.move(viewX, viewY);
+		UpdatePosition(-1, 0, 10);
+		window.setView(view1);
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Right))
+	{
+		viewX += 10;
+		view1.move(viewX, viewY);
+		UpdatePosition(1, 0, 10);
+		window.setView(view1);
+	}
+}

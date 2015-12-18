@@ -3,13 +3,12 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 #include "HumanStatistic.h"
-//#include "GlobalObjects.h"
 #include "TextureLoader.h"
+#include "HumanAI.h"
 
 using namespace std;
 
-
-class Human : public sf::Drawable, sf::Transformable
+class Human : public sf::Drawable, sf::Transformable, HumanAI
 {
 public:
 	friend class Engine;
@@ -29,7 +28,7 @@ public:
 	void idz();
 	void goToPoint(sf::Vector2f);
 	
-	
+	int ID;
 protected:
 	int klatka_animacji;
 

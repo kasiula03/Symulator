@@ -49,34 +49,10 @@ private:
 class listOfNames
 {
 public:
+	listOfNames();
 	string namesWomen[11] = { "Sylwia","Klaudia","Monika","Agata","Pola","Gabriela","Justyna","Ola","Katherine","Monika","Urszula" };
 	string SureNames[9] = { "Nowak","Kowal","Burzynski","Hanusiak","Bogusz","Jaworski","Typo","Sarmanczyk","Nacz" };
-	//static string * namesWomen;
-	//static string * namesMen;
-	
 };
-/*
-template<typename _type> class Node
-{
-public:
-	_type * object = new _type;
-	int which;
-	Node<_type> * prev;
-	Node<_type> * next;
-};
-
-template<typename _typ> class list
-{
-	friend class GlobalPopulation;
-	Node<_typ> * head;
-public:
-	void addNode(_typ & const);
-	//void findNode(int);
-
-};
-*/
-
-
 
 template<typename _typ> class Node
 {

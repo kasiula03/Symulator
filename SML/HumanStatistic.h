@@ -15,12 +15,15 @@ class HumanStatistic : public sf::Drawable, sf::Transformable
 	friend class GlobalPopulation;
 	friend class Human;
 	friend class Engine;
-	
+	//Postawowe informacje o postaci
 	string surename, lastname, gender;
-	int age;
-	Text Surename, Lastname, Gender, Age;
+	int age, id;
+	Text Surename, Lastname, Gender, Age, ID;
+
+	//Statystyki
+	int hp, inteligence, strength;
 	RectangleShape background;
-	HumanStatistic(string="Aga",string="Nowak",string="Kobieta",int=18);
+	HumanStatistic(string="Aga",string="Nowak",string="Kobieta",int=18,int=0);
 
 	bool visible;
 

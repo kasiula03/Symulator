@@ -67,6 +67,7 @@ void Game::menu()
 		FloatRect cursor_box = FloatRect(mouseX, mouseY, 1, 1);
 		while (window.pollEvent(event))
 		{
+			// Poprawne, ale lekko dziwne skalowanie tekstu
 			Vector2f pos(tekst[0].getGlobalBounds().left, tekst[0].getGlobalBounds().top);
 			Vector2f size(tekst[0].getGlobalBounds().width, tekst[0].getGlobalBounds().height);
 			FloatRect newRect(static_cast < Vector2f >(window.mapCoordsToPixel(pos)), static_cast < Vector2f >(window.mapCoordsToPixel(size)));
