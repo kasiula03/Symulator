@@ -33,9 +33,8 @@ protected:
 	int klatka_animacji;
 
 private:
-	TextureLoader allTextures;
+	static TextureLoader allTextures;
 	sf::Sprite sprite;
-	sf::Texture texture;
 	sf::RectangleShape EyesShot; //pole widzenia
 	sf::RectangleShape HumanColision; //kolizja
 	HumanStatistic stats;

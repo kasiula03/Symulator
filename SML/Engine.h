@@ -29,4 +29,5 @@ private:
 	GlobalPopulation peoples;
 	void Display(RenderWindow &);
 	void MoveCamera(RenderWindow &, View &);
+	void CheckCollision();
 };

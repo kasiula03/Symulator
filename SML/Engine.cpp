@@ -1,4 +1,4 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 #include <iostream>
 #include <Windows.h>
 using namespace sf;
@@ -152,4 +152,23 @@ void Engine::MoveCamera(RenderWindow & window,View & view1)
 		UpdatePosition(1, 0, 10);
 		window.setView(view1);
 	}
+}
+void Engine::CheckCollision()
+{
+	if (player.status == Human::STOJ) return;
+
+	//pobranie aktualnej wartoœci boxa
+	FloatRect box1(player.HumanColision.getGlobalBounds());
+
+
+	int x = box1.left / (ground.width * 10);
+	int y = box1.top / (ground.height * 10);
+	/*
+	if (!ground.map[x][y].isWalkable && box1.intersects(ground.map[x][y].collider.getGlobalBounds()))
+	{
+	cout << "duuuu " << endl;
+	player.stop(); //poprawic
+	}
+
+	*/
 }

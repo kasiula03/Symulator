@@ -9,4 +9,5 @@ class TextureLoader
 public:
 	TextureLoader();
 	static Texture * textures;
+	const Texture & operator[](int el);
 };

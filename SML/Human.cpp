@@ -10,6 +10,7 @@ using namespace sf;
 #define M_PI 3.14159265358979323846
 
 float Human::speed;
+TextureLoader Human::allTextures;
 
 Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja postaci
 {

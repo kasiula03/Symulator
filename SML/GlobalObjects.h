@@ -71,6 +71,7 @@ public:
 	{
 		head = NULL;
 	}
+	
 	void addNode(type & temp)
 	{
 		Node<type> * tempN = head;
