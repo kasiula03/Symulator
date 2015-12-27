@@ -7,6 +7,7 @@
 #include "Human.h"
 #include "GlobalObjects.h"
 #include "Population.h"
+#include "Items.h"
 using namespace std;
 using namespace sf;
 
@@ -23,6 +24,7 @@ public:
 private:
 	Human player;
 	Ground ground;
+	Trees trees;
 	GlobalClock g_clock;
 	GlobalData g_data;
 	Font font;

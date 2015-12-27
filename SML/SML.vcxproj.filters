@@ -63,6 +63,9 @@
     <ClCompile Include="Human.cpp">
       <Filter>Source Files\Human</Filter>
     </ClCompile>
+    <ClCompile Include="Items.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Population.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="Human.h">
       <Filter>Header Files\Human</Filter>
+    </ClInclude>
+    <ClInclude Include="Items.h">
+      <Filter>Header Files\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

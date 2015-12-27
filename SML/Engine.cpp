@@ -16,6 +16,7 @@ Engine::Engine(sf::RenderWindow &win)
 	}
 	player = Human("Ania","Kowal","Kobieta",25);
 	peoples = GlobalPopulation(5);
+	trees = Trees(8);
 	runEngine(win);
 
 }
@@ -116,6 +117,7 @@ void Engine::Display(RenderWindow & window)
 	window.draw(ground);
 	window.draw(player);
 	window.draw(peoples);
+	window.draw(trees);
 	window.draw(g_clock);
 	window.draw(g_data);
 	window.display();
@@ -160,15 +162,12 @@ void Engine::CheckCollision()
 	//pobranie aktualnej wartoœci boxa
 	FloatRect box1(player.HumanColision.getGlobalBounds());
 
-
-	int x = box1.left / (ground.width * 10);
-	int y = box1.top / (ground.height * 10);
-	/*
-	if (!ground.map[x][y].isWalkable && box1.intersects(ground.map[x][y].collider.getGlobalBounds()))
+	
+	/*if (!trees.trees. && box1.intersects(ground.map[x][y].collider.getGlobalBounds()))
 	{
 	cout << "duuuu " << endl;
 	player.stop(); //poprawic
-	}
+	}*/
 
-	*/
+	
 }

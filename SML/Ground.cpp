@@ -47,8 +47,8 @@ Ground::Ground()
 		}
 	}*/
 	sprite.setTexture(textures[5]);
-	sprite.setTextureRect(IntRect(0, 0, 2000, 1500));
-	sprite.setPosition(0, 0);
+	sprite.setTextureRect(IntRect(0, 0, 4000, 3000));
+	sprite.setPosition(-500, -300);
 }
 Ground::~Ground()
 {
@@ -68,29 +68,3 @@ void Ground::draw(sf::RenderTarget &target, sf::RenderStates states) const
 	target.draw(sprite);
 }
 
-//Utworzenie pojedynczego obiektu
-SingleObject::SingleObject(int which,int width,int height)
-{
-	sprite.setTexture(textures[which]);
-	sprite.setTextureRect(IntRect(0, 0, width, height));
-	sprite.setPosition(0, 0);
-
-	collider.setSize(Vector2f(width, height));
-
-	collider.setFillColor(sf::Color(255, 232, 54, 120));
-	//collider.setOrigin(32, 32);
-	collider.setPosition(0,0);
-}
-//Ustawienie pozycji
-void SingleObject::setPosition(int x, int y)
-{
-	sprite.setPosition(x, y);
-	collider.setPosition(x, y);
-}
-void SingleObject::draw(sf::RenderTarget &target, sf::RenderStates states) const
-{
-	states.transform *= getTransform();
-
-	target.draw(sprite);
-	//target.draw(collider);
-}

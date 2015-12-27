@@ -127,6 +127,7 @@
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="HumanAI.cpp" />
     <ClCompile Include="HumanStatistic.cpp" />
+    <ClCompile Include="Items.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="Population.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="HumanStatistic.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="Population.h" />
     <ClInclude Include="TextureLoader.h" />
   </ItemGroup>
