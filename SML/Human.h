@@ -5,15 +5,16 @@
 #include "HumanStatistic.h"
 #include "TextureLoader.h"
 #include "HumanAI.h"
-
 using namespace std;
 
-class Human : public sf::Drawable, sf::Transformable, HumanAI
+
+class Human : public sf::Drawable, sf::Transformable
 {
 public:
 	friend class Engine;
 	friend class HumanStatistic;
 	friend class GlobalPopulation;
+	friend class HumanAI;
 	Human(string,string,string,int);
 	Human();
 	~Human();
@@ -33,6 +34,8 @@ protected:
 	int klatka_animacji;
 
 private:
+	HumanAI * AI;
+
 	static TextureLoader allTextures;
 	sf::Sprite sprite;
 	sf::RectangleShape EyesShot; //pole widzenia
@@ -49,6 +52,7 @@ private:
 	float vx, vy;
 
 	bool inStage;
+	bool stoped;
 	bool rotated;
 	bool visibleStat;
 	sf::Vector2f targetToGo; //Cel

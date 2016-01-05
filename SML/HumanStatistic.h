@@ -16,8 +16,10 @@ class HumanStatistic : public sf::Drawable, sf::Transformable
 	friend class Human;
 	friend class Engine;
 	//Postawowe informacje o postaci
+public:
 	string surename, lastname, gender;
 	int age, id;
+private:
 	Text Surename, Lastname, Gender, Age, ID;
 
 	//Statystyki

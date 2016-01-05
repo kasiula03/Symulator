@@ -105,6 +105,7 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		{
 			g_data.UpdateData();
 		}
+		CheckCollision();
 		player.update(mysz); //aktualizacja polozenia gracza(testowego)
 		peoples.update(mysz); //aktualizacja wszystkich
 		Display(window);
@@ -157,17 +158,30 @@ void Engine::MoveCamera(RenderWindow & window,View & view1)
 }
 void Engine::CheckCollision()
 {
-	if (player.status == Human::STOJ) return;
+	//if (player.status == Human::STOJ) return;
 
-	//pobranie aktualnej wartoœci boxa
-	FloatRect box1(player.HumanColision.getGlobalBounds());
-
+	//pobranie aktualnej wartosci boxa
 	
-	/*if (!trees.trees. && box1.intersects(ground.map[x][y].collider.getGlobalBounds()))
+	int i = 0;
+	Node<SingleObject> * temp = trees.trees.head;
+	Node <Human> * tmpHum = peoples.listOfPeople.head;
+	while (temp)
 	{
-	cout << "duuuu " << endl;
-	player.stop(); //poprawic
-	}*/
+		while(tmpHum)
+		{
+			if (tmpHum->object.status == Human::STOJ) return;
+			FloatRect boxTree(temp->object.collider.getGlobalBounds());
+			FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());
+			if (tmpHum->object.HumanColision.getGlobalBounds().intersects(boxTree))
+			{
+				cout << "Kolizja" << endl;
+				tmpHum->object.stoped = true;
+				tmpHum->object.stop();
+			}
+		
+			tmpHum = tmpHum->next;
+		}
 
-	
+		temp = temp->next;
+	}
 }

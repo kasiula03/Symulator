@@ -12,25 +12,18 @@ GlobalPopulation::GlobalPopulation(int x)
 	{
 		listOfPeople.addNode(Human()); //dodanie do listy ludzi
 	}
-	sf::Vector2f vec;
 	Node<Human> * temp = listOfPeople.head;
 	int i = 0;
 	while(temp)
 	{
 		amount++;
-		if(i % 2 == 1)
-			vec = sf::Vector2f(i * 100 , i * 10);
-		else
-			vec = sf::Vector2f(i * 100 , i * 50);
+
 
 		temp->object.ID = amount;
-		//ustawienie pierwszego puntu docelowego
-		temp->object.targetToGo = vec;
-		temp->object.inStage = true;
-		temp->object.goToPoint(vec);
+
 		temp = temp->next;
 		i++;
-		cout << amount << endl;
+		//cout << amount << endl;
 	}
 
 }

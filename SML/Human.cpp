@@ -5,6 +5,7 @@
 #include "GlobalObjects.h"
 #include <cstdlib>
 #include <ctime>
+
 using namespace sf;
 
 #define M_PI 3.14159265358979323846
@@ -22,7 +23,12 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	sprite.setOrigin(32, 32);
 
 	ID = 0;
+
+	AI = new HumanAI;
+	AI->thisOne = this;
+
 	
+	stoped = false;
 	visibleStat = false;
 	status = STOJ;
 	direction = Back;
@@ -34,10 +40,10 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	sprite.setPosition(1366 / 2, 768 / 2);
 	anim_clock.restart();
 
-	HumanColision.setSize(Vector2f(60, 70));
+	HumanColision.setSize(Vector2f(50, 60));
 
 	HumanColision.setFillColor(sf::Color(255, 232, 54, 120));
-	HumanColision.setOrigin(32, 32);
+	HumanColision.setOrigin(25, 30);
 	HumanColision.setPosition(1366/2, 768/2);
 	
 	EyesShot.setSize(Vector2f(400,600));
@@ -45,6 +51,8 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	//EyesShot.setOrigin(125, (768/2) + 230 );
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
+
+	AI->DoSomething();
 }
 Human::Human()
 {
@@ -66,7 +74,12 @@ Human::Human()
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
 	
+	AI = new HumanAI;
+	AI->thisOne = this;
+
 	ID = 0;
+
+	stoped = false;
 	visibleStat = false;
 	status = STOJ;
 	direction = Back;
@@ -78,10 +91,10 @@ Human::Human()
 	sprite.setPosition(1366 / 2, 768 / 2);
 	anim_clock.restart();
 
-	HumanColision.setSize(Vector2f(60, 70));
+	HumanColision.setSize(Vector2f(50, 60));
 
 	HumanColision.setFillColor(sf::Color(255, 232, 54, 120));
-	HumanColision.setOrigin(32, 32);
+	HumanColision.setOrigin(25, 30);
 	HumanColision.setPosition(1366 / 2, 768 / 2);
 
 	EyesShot.setSize(Vector2f(400, 600));
@@ -90,11 +103,11 @@ Human::Human()
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
 	
+	AI->DoSomething();
 }
 Human::~Human()
 {
-	cout << "USMIERCENIE!" << endl;
-	cout << stats.surename << endl;
+	
 }
 
 Vector2f Human::getPosition()
@@ -108,7 +121,7 @@ void Human::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 	//target.draw(EyesShot);
 	target.draw(sprite);
-	//target.draw(HumanColision);
+	target.draw(HumanColision);
 	if (visibleStat == true)
 		target.draw(stats);
 }
@@ -168,6 +181,9 @@ void Human::stop()
 {
 	status = STOJ;
 	frame = 0;
+	inStage = false;
+	rotated = false;
+
 }
 
 void Human::idz()
@@ -209,8 +225,6 @@ void Human::goToPoint(Vector2f Point)
 	{
 	
 		float rotation = asin((Point.y - this->getPosition().y) / distance) * 180.0f / M_PI;
-
-		//if (Point.x < this->getPosition().x) rotation = 360 - rotation;
 			
 		float dir = -atan2(Point.x - this->getPosition().x, Point.y - this->getPosition().y) * 180.0f / M_PI;
 	
@@ -234,7 +248,6 @@ void Human::goToPoint(Vector2f Point)
 	{
 		stop();
 		rotated = false;
-		inStage = false;
 	}
 
 }

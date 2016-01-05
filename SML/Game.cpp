@@ -77,7 +77,6 @@ void Game::menu()
 
 			else if (newRect.contains(static_cast < Vector2f >(Mouse::getPosition(window))) && event.type == Event::MouseButtonReleased && event.key.code == Mouse::Left)
 			{
-				cout << "Wchodzimy" << endl;
 				state = GAME;
 			}
 			
