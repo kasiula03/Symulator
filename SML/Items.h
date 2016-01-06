@@ -25,8 +25,8 @@ class Trees : public sf::Drawable, sf::Transformable
 {
 	friend class Engine;
 	int x;
-	list<SingleObject> trees;
 public:
+	list<SingleObject> trees;
 	Trees(int=0);
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };

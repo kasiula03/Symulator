@@ -105,9 +105,10 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		{
 			g_data.UpdateData();
 		}
-		CheckCollision();
+		
 		player.update(mysz); //aktualizacja polozenia gracza(testowego)
 		peoples.update(mysz); //aktualizacja wszystkich
+		CheckCollision();
 		Display(window);
 	}
 }
@@ -160,28 +161,34 @@ void Engine::CheckCollision()
 {
 	//if (player.status == Human::STOJ) return;
 
-	//pobranie aktualnej wartosci boxa
 	
 	int i = 0;
-	Node<SingleObject> * temp = trees.trees.head;
-	Node <Human> * tmpHum = peoples.listOfPeople.head;
+	Node <SingleObject> * temp = this->trees.trees.head;
+	
 	while (temp)
 	{
+		int i = 0;
+		FloatRect boxTree(temp->object.collider.getGlobalBounds());
+		Node <Human> * tmpHum = peoples.listOfPeople.head;
 		while(tmpHum)
 		{
-			if (tmpHum->object.status == Human::STOJ) return;
-			FloatRect boxTree(temp->object.collider.getGlobalBounds());
-			FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());
-			if (tmpHum->object.HumanColision.getGlobalBounds().intersects(boxTree))
+			//cout << i++ << "\t";
+			//cout << temp->object.collider.getGlobalBounds().left << endl;
+			if (tmpHum->object.status != Human::STOJ)
 			{
-				cout << "Kolizja" << endl;
-				tmpHum->object.stoped = true;
-				tmpHum->object.stop();
+				FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());
+				//cout << temp->object.collider.getGlobalBounds().left << "\t" << temp->object.collider.getGlobalBounds().top << endl;
+				if (box1.intersects(boxTree))
+				{
+					cout << "Kolizja" << endl;
+					tmpHum->object.stoped = true;
+					tmpHum->object.stop();
+				}
 			}
-		
 			tmpHum = tmpHum->next;
 		}
-
+		//if (tempe->next) cout << "Istnieje";
 		temp = temp->next;
+		
 	}
 }
