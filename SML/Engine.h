@@ -22,7 +22,6 @@ public:
 	void UpdatePosition(int, int, float);
 	
 private:
-	//Human player;
 	Ground ground;
 	Trees trees;
 	GlobalClock g_clock;

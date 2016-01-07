@@ -8,14 +8,13 @@ using namespace std;
 
 Engine::Engine(sf::RenderWindow &win)
 {
-	
+
 	if (!font.loadFromFile("data/Mecha.ttf"))
 	{
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
 		return;
 	}
-	//player = Human("Ania","Kowal","Kobieta",25);
-	peoples = GlobalPopulation(5);
+	peoples = GlobalPopulation(4);
 	trees = Trees(8);
 	runEngine(win);
 
@@ -42,70 +41,57 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 {
 	bool menu = false;
 	float tempSpeed = peoples.listOfPeople.head->object.speed;
-	
+
 	while (!menu)
 	{
-		Event event;
 		Vector2i mouseWindow = Mouse::getPosition(window);
 		Vector2f mysz = window.mapPixelToCoords(mouseWindow);
 		View view1 = window.getDefaultView();
-	
-		
-		while (window.pollEvent(event))
+
+
+		if (Keyboard::isKeyPressed(Keyboard::Escape)) menu = true; // Wyjscie do menu
+
+		if (Keyboard::isKeyPressed(Keyboard::W))
 		{
-			if (event.type == Event::KeyReleased && event.key.code == Keyboard::Escape) menu = true; // Wyjscie do menu
+			peoples.CreateHuman();
 
-			/*if (event.type == Event::MouseButtonPressed && event.key.code == Mouse::Left) //poruszanie sie za pomoca myszki
+		}
+
+		/*else if (event.type == Event::KeyReleased)
+		{
+		if (event.key.code == Keyboard::W)
+		player.stop();
+		}*/
+		if (Keyboard::isKeyPressed)
+		{
+			MoveCamera(window, view1);
+
+			if (Keyboard::isKeyPressed(Keyboard::Num1))
 			{
-				if(player.inStage == false) player.goToPoint(mysz);
-				//for (int i = 0; i < peoples.x; i++)
-					//peoples.peoples[i].goToPoint(mysz);
-			}*/
-			
-			if (event.type == Event::KeyPressed)
-			{
-				if (Keyboard::isKeyPressed(Keyboard::W))
-				{
-					peoples.CreateHuman();
-				}
+				g_clock.timeSpeed = 1;
+				peoples.listOfPeople.head->object.speed = tempSpeed;
+
 			}
-
-			/*else if (event.type == Event::KeyReleased)
+			if (Keyboard::isKeyPressed(Keyboard::Num2))
 			{
-				if (event.key.code == Keyboard::W)
-					player.stop();
-			}*/
-			if (event.type == Event::KeyPressed)
+				peoples.listOfPeople.head->object.speed = tempSpeed;
+				g_clock.timeSpeed = 10;
+				peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Num3))
 			{
-				MoveCamera(window,view1);
-
-				if (event.key.code == Keyboard::Num1)
-				{
-					g_clock.timeSpeed = 1;
-					peoples.listOfPeople.head->object.speed = tempSpeed;
-				
-				}
-				if (event.key.code == Keyboard::Num2)
-				{
-					peoples.listOfPeople.head->object.speed = tempSpeed;
-					g_clock.timeSpeed = 10;
-					peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
-				}
-				if (event.key.code == Keyboard::Num3)
-				{
-					peoples.listOfPeople.head->object.speed = tempSpeed;
-					g_clock.timeSpeed = 50;
-					peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
-				}
+				peoples.listOfPeople.head->object.speed = tempSpeed;
+				g_clock.timeSpeed = 50;
+				peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
 			}
 		}
-		
+
+
 		if (g_clock.UpdateTime())
 		{
 			g_data.UpdateData();
 		}
-		
-		//player.update(mysz); //aktualizacja polozenia gracza(testowego)
+
 		peoples.update(mysz); //aktualizacja wszystkich
 		CheckCollision();
 		Display(window);
@@ -116,14 +102,13 @@ void Engine::Display(RenderWindow & window)
 {
 	window.clear();
 	window.draw(ground);
-	//window.draw(player);
 	window.draw(peoples);
 	window.draw(trees);
 	window.draw(g_clock);
 	window.draw(g_data);
 	window.display();
 }
-void Engine::MoveCamera(RenderWindow & window,View & view1)
+void Engine::MoveCamera(RenderWindow & window, View & view1)
 {
 	static float viewX = 0;
 	static float viewY = 0;
@@ -158,34 +143,34 @@ void Engine::MoveCamera(RenderWindow & window,View & view1)
 }
 void Engine::CheckCollision()
 {
-	//if (player.status == Human::STOJ) return;
 
-	
 	int i = 0;
 	Node <SingleObject> * temp = this->trees.trees.head;
-	
+
 	while (temp)
 	{
 		int i = 0;
 		FloatRect boxTree(temp->object.collider.getGlobalBounds());
 		Node <Human> * tmpHum = peoples.listOfPeople.head;
-		while(tmpHum)
+		while (tmpHum)
 		{
 			if (tmpHum->object.status != Human::STOJ)
 			{
 				FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());
-				//cout << temp->object.collider.getGlobalBounds().left << "\t" << temp->object.collider.getGlobalBounds().top << endl;
 				if (box1.intersects(boxTree))
 				{
-					cout << "Kolizja" << endl;
-					tmpHum->object.stoped = true;
-					tmpHum->object.stop();
+					if (tmpHum->object.inStage == true)
+					{
+						cout << "Kolizja" << endl;
+						tmpHum->object.stoped = true;
+						tmpHum->object.stop();
+					}
 				}
+
 			}
 			tmpHum = tmpHum->next;
 		}
-		//if (tempe->next) cout << "Istnieje";
 		temp = temp->next;
-		
+
 	}
 }

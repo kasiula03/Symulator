@@ -24,7 +24,8 @@ public:
 
 	enum Status { IDZ, STOJ, Forward, Back};
 	sf::Vector2f getPosition();
-	//Status getStatus();
+
+	int getStatusAi();
 
 	void update(sf::Vector2f);
 	void setRotation(float,float);

@@ -124,7 +124,6 @@ Human & Human::operator=(Human const & tmp)
 	this->visibleStat = tmp.visibleStat;
 	this->vx = tmp.vx;
 	this->vy = tmp.vy;
-	cout << "Przypisanie";
 
 	this->AI->thisOne = this;
 
@@ -181,14 +180,16 @@ void Human::update(Vector2f mysz)
 	if (anim_clock.getElapsedTime() > sf::seconds(0.09f))
 	{
 
-		if (status == STOJ) return;
-		if (frame < 8)
-			frame++;
-		else
-			frame = 0;
-		if(direction == Forward) sprite.setTextureRect(IntRect(frame * 64, 128, 64, 64));
-		else if (direction == Back) sprite.setTextureRect(IntRect(frame * 64, 0, 64, 64));
-		anim_clock.restart();
+		if (status != STOJ)
+		{
+			if (frame < 8)
+				frame++;
+			else
+				frame = 0;
+			if (direction == Forward) sprite.setTextureRect(IntRect(frame * 64, 128, 64, 64));
+			else if (direction == Back) sprite.setTextureRect(IntRect(frame * 64, 0, 64, 64));
+			anim_clock.restart();
+		}
 	}
 	AI->MainCore(); //Glowna funkcja inteligencji
 	
@@ -237,8 +238,9 @@ void Human::goToPoint(Vector2f Point)
 	//cout << "tak";
 	float distx, disty;
 	float temp;
-	inStage = true;
+	if (inStage == false) return;
 	targetToGo = Point;
+	stoped = false;
 	
 	distx = Point.x - this->getPosition().x;
 	
@@ -272,8 +274,12 @@ void Human::goToPoint(Vector2f Point)
 
 	if (disty <= 5 && distx <= 5 && disty > -1 && distx > -1)
 	{
+		cout << "Dotarlem" << endl;
+		stoped = true;
 		stop();
-		rotated = false;
 	}
-
+}
+int Human::getStatusAi()
+{
+	return AI->state;
 }

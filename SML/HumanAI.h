@@ -10,8 +10,10 @@ class HumanAI
 	Human * thisOne;
 	HumanAI();
 	~HumanAI();
-	enum Status {Talking, CuttingTree, Foraging, Building, Walking, Nothing};
+	enum Status {Talking, CuttingTree, Foraging, Building, Walking, Anythingelse, Nothing};
 	void MainCore();
 
+	Status state;
 	bool Created;
+	
 };
