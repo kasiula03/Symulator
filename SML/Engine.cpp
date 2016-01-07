@@ -14,7 +14,7 @@ Engine::Engine(sf::RenderWindow &win)
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
 		return;
 	}
-	player = Human("Ania","Kowal","Kobieta",25);
+	//player = Human("Ania","Kowal","Kobieta",25);
 	peoples = GlobalPopulation(5);
 	trees = Trees(8);
 	runEngine(win);
@@ -35,15 +35,13 @@ void Engine::UpdatePosition(int x, int y, float speed)
 	g_data.Month.move(x * speed, y * speed);
 	g_data.Year.move(x * speed, y * speed);
 	g_clock.textTime.move(x * speed, y * speed);
-	g_clock.Fast.move(x * speed, y * speed);
-	g_clock.Faster.move(x * speed, y * speed);
-	g_clock.NormalSpeed.move(x * speed, y * speed);
+
 }
 
 void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 {
 	bool menu = false;
-	float tempSpeed = player.speed;
+	float tempSpeed = peoples.listOfPeople.head->object.speed;
 	
 	while (!menu)
 	{
@@ -57,12 +55,12 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		{
 			if (event.type == Event::KeyReleased && event.key.code == Keyboard::Escape) menu = true; // Wyjscie do menu
 
-			if (event.type == Event::MouseButtonPressed && event.key.code == Mouse::Left) //poruszanie sie za pomoca myszki
+			/*if (event.type == Event::MouseButtonPressed && event.key.code == Mouse::Left) //poruszanie sie za pomoca myszki
 			{
 				if(player.inStage == false) player.goToPoint(mysz);
 				//for (int i = 0; i < peoples.x; i++)
 					//peoples.peoples[i].goToPoint(mysz);
-			}
+			}*/
 			
 			if (event.type == Event::KeyPressed)
 			{
@@ -72,11 +70,11 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 				}
 			}
 
-			else if (event.type == Event::KeyReleased)
+			/*else if (event.type == Event::KeyReleased)
 			{
 				if (event.key.code == Keyboard::W)
 					player.stop();
-			}
+			}*/
 			if (event.type == Event::KeyPressed)
 			{
 				MoveCamera(window,view1);
@@ -84,19 +82,20 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 				if (event.key.code == Keyboard::Num1)
 				{
 					g_clock.timeSpeed = 1;
-					player.speed = tempSpeed;
+					peoples.listOfPeople.head->object.speed = tempSpeed;
+				
 				}
 				if (event.key.code == Keyboard::Num2)
 				{
-					player.speed = tempSpeed;
+					peoples.listOfPeople.head->object.speed = tempSpeed;
 					g_clock.timeSpeed = 10;
-					player.speed *= g_clock.timeSpeed;
+					peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
 				}
 				if (event.key.code == Keyboard::Num3)
 				{
-					player.speed = tempSpeed;
+					peoples.listOfPeople.head->object.speed = tempSpeed;
 					g_clock.timeSpeed = 50;
-					player.speed *= g_clock.timeSpeed;
+					peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
 				}
 			}
 		}
@@ -106,7 +105,7 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 			g_data.UpdateData();
 		}
 		
-		player.update(mysz); //aktualizacja polozenia gracza(testowego)
+		//player.update(mysz); //aktualizacja polozenia gracza(testowego)
 		peoples.update(mysz); //aktualizacja wszystkich
 		CheckCollision();
 		Display(window);
@@ -117,7 +116,7 @@ void Engine::Display(RenderWindow & window)
 {
 	window.clear();
 	window.draw(ground);
-	window.draw(player);
+	//window.draw(player);
 	window.draw(peoples);
 	window.draw(trees);
 	window.draw(g_clock);
@@ -172,8 +171,6 @@ void Engine::CheckCollision()
 		Node <Human> * tmpHum = peoples.listOfPeople.head;
 		while(tmpHum)
 		{
-			//cout << i++ << "\t";
-			//cout << temp->object.collider.getGlobalBounds().left << endl;
 			if (tmpHum->object.status != Human::STOJ)
 			{
 				FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());

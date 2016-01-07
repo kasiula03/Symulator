@@ -16,13 +16,9 @@ void GlobalClock::SetSingleText(Text & tekst, string strText, float x, float y)
 
 void GlobalClock::SetTexts() //Ustawienie czasu (i opcji jego przyspieszenia) w prawym gornym rogu
 {
-	SetSingleText(textTime, "00:00:00", 1050, 20);
+	SetSingleText(textTime, "00:00:00", 1100, 20);
 
-	SetSingleText(Faster, " << ", 900, 20);
 
-	SetSingleText(Fast, " < ", 950, 20);
-
-	SetSingleText(NormalSpeed, " I ", 1000, 20);
 }
 
 GlobalClock::GlobalClock()
@@ -70,10 +66,6 @@ void GlobalClock::draw(sf::RenderTarget &target, sf::RenderStates states) const
 	states.transform *= getTransform();
 
 	target.draw(this->textTime);
-	target.draw(this->Faster);
-	target.draw(this->NormalSpeed);
-	target.draw(this->Fast);
-	
 }
 
 void GlobalData::SetSingleText(Text & tekst, string strText, float x, float y)
@@ -141,5 +133,5 @@ void GlobalData::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 listOfNames::listOfNames()
 {
-	cout << "Adres: " << &*this << endl;
+	
 }

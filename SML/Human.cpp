@@ -26,7 +26,7 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 
 	AI = new HumanAI;
 	AI->thisOne = this;
-
+	AI->Created = true;
 	
 	stoped = false;
 	visibleStat = false;
@@ -51,8 +51,7 @@ Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja
 	//EyesShot.setOrigin(125, (768/2) + 230 );
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
-
-	AI->DoSomething();
+	
 }
 Human::Human()
 {
@@ -76,6 +75,7 @@ Human::Human()
 	
 	AI = new HumanAI;
 	AI->thisOne = this;
+	AI->Created = true;
 
 	ID = 0;
 
@@ -103,8 +103,34 @@ Human::Human()
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
 	
-	AI->DoSomething();
 }
+
+Human & Human::operator=(Human const & tmp)
+{
+	this->ID = tmp.ID;
+	this->AI->Created = tmp.AI->Created;
+	this->sprite = tmp.sprite;
+	this->direc = tmp.direc;
+	this->direction = tmp.direction;
+	this->EyesShot = tmp.EyesShot;
+	this->HumanColision = tmp.HumanColision;
+	this->inStage = tmp.inStage;
+	this->rotated = tmp.rotated;
+	this->speed = tmp.speed;
+	this->stats = tmp.stats;
+	this->status = tmp.status;
+	this->stoped = tmp.stoped;
+	this->targetToGo = tmp.targetToGo;
+	this->visibleStat = tmp.visibleStat;
+	this->vx = tmp.vx;
+	this->vy = tmp.vy;
+	cout << "Przypisanie";
+
+	this->AI->thisOne = this;
+
+	return *this;
+}
+
 Human::~Human()
 {
 	
@@ -121,7 +147,7 @@ void Human::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 	//target.draw(EyesShot);
 	target.draw(sprite);
-	target.draw(HumanColision);
+	//target.draw(HumanColision);
 	if (visibleStat == true)
 		target.draw(stats);
 }
@@ -164,8 +190,8 @@ void Human::update(Vector2f mysz)
 		else if (direction == Back) sprite.setTextureRect(IntRect(frame * 64, 0, 64, 64));
 		anim_clock.restart();
 	}
+	AI->MainCore(); //Glowna funkcja inteligencji
 	
-
 }
 
 void Human::setRotation(float angle,float angleEye)

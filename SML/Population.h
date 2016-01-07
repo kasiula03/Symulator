@@ -9,7 +9,7 @@ class GlobalPopulation : public sf::Drawable, sf::Transformable
 	list<Human> listOfPeople;
 public:
 	static int amount;
-	GlobalPopulation(int=0);
+	GlobalPopulation(int=2);
 	void CreateHuman();
 	void update(sf::Vector2f);
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;

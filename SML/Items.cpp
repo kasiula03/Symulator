@@ -30,7 +30,7 @@ void SingleObject::draw(sf::RenderTarget &target, sf::RenderStates states) const
 	states.transform *= getTransform();
 
 	target.draw(sprite);
-	target.draw(collider);
+	//target.draw(collider);
 }
 Trees::Trees(int x)
 {

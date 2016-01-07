@@ -15,6 +15,9 @@ public:
 	friend class HumanStatistic;
 	friend class GlobalPopulation;
 	friend class HumanAI;
+
+	Human & operator=(Human const &);
+
 	Human(string,string,string,int);
 	Human();
 	~Human();
@@ -41,8 +44,7 @@ private:
 	sf::RectangleShape EyesShot; //pole widzenia
 	sf::RectangleShape HumanColision; //kolizja
 	HumanStatistic stats;
-	
-	sf::RectangleShape du;
+
 	Status status;
 	Status direction;
 	int direc;

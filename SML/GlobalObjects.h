@@ -26,7 +26,6 @@ private:
 	
 	Font font;
 	Text textTime;
-	Text Fast,Faster, NormalSpeed;
 	void SetTexts();
 	void SetSingleText(Text &, string, float, float);
 };

@@ -1,14 +1,17 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include <vector>
 #include "Human.h"
 using namespace sf;
+
 
 class HumanAI
 {
 	friend class Human;
 	Human * thisOne;
 	HumanAI();
-	enum Status {};
-	void DoSomething();
+	~HumanAI();
+	enum Status {Talking, CuttingTree, Foraging, Building, Walking, Nothing};
+	void MainCore();
+
+	bool Created;
 };
