@@ -1,4 +1,20 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SML.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  HumanAI.cpp
-e:\git\symulator\sml\humanai.cpp(46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  HumanAI.cpp
+e:\git\symulator\sml\humanai.cpp(52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Engine.cpp
+e:\git\symulator\sml\engine.cpp(84): warning C4551: function call missing argument list
+  Generating Code...
+  Compiling...
+  Human.cpp
+e:\git\symulator\sml\human.cpp(223): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\git\symulator\sml\human.cpp(224): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\git\symulator\sml\human.cpp(256): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\git\symulator\sml\human.cpp(258): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Population.cpp
+  Items.cpp
+  HumanStatistic.cpp
+  GlobalObjects.cpp
+  Game.cpp
   SML.vcxproj -> E:\Git\Symulator\Debug\Symulator.exe

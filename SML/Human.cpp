@@ -77,6 +77,7 @@ Human::Human()
 	AI->thisOne = this;
 	AI->Created = true;
 
+
 	ID = 0;
 
 	stoped = false;

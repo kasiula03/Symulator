@@ -2,36 +2,7 @@
 
 using namespace sf;
 
-TextureLoader SingleObject::textures;
 
-//Utworzenie pojedynczego obiektu
-SingleObject::SingleObject(int which, int width, int height)
-{
-	sprite.setTexture(textures[which]);
-	sprite.setTextureRect(IntRect(0, 0, width, height));
-	sprite.setPosition(0, 0);
-
-	collider.setSize(Vector2f(width, height));
-
-	collider.setFillColor(sf::Color(255, 232, 54, 120));
-	//collider.setOrigin(32, 32);
-	collider.setPosition(0, 0);
-}
-//Ustawienie pozycji
-void SingleObject::setPosition(int x, int y)
-{
-	sprite.setPosition(x, y);
-	collider.setPosition(x, y);
-	pos_x = x;
-	pos_y = y;
-}
-void SingleObject::draw(sf::RenderTarget &target, sf::RenderStates states) const
-{
-	states.transform *= getTransform();
-
-	target.draw(sprite);
-	//target.draw(collider);
-}
 Trees::Trees(int x)
 {
 	this->x = x;
@@ -39,7 +10,7 @@ Trees::Trees(int x)
 	Node<SingleObject> * temp;
 	for (int i = 0; i < x; i++)
 	{
-		trees.addNode(SingleObject(6,50,82)); //dodanie do listy ludzi
+		trees.addNode(SingleObject(6,50,82)); //dodanie do listy drzew
 	
 	}
 	temp = trees.head;
@@ -61,7 +32,8 @@ void Trees::draw(sf::RenderTarget &target, sf::RenderStates states) const
 	Node<SingleObject> * temp = trees.head;
 	while (temp)
 	{
-		target.draw(temp->object);
+		if(temp->which > 0) target.draw(temp->object);
+		else break;
 		temp = temp->next;
 	}
 }

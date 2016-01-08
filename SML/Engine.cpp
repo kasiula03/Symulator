@@ -14,7 +14,7 @@ Engine::Engine(sf::RenderWindow &win)
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
 		return;
 	}
-	peoples = GlobalPopulation(4);
+	peoples = GlobalPopulation(3);
 	trees = Trees(8);
 	runEngine(win);
 
@@ -41,27 +41,46 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 {
 	bool menu = false;
 	float tempSpeed = peoples.listOfPeople.head->object.speed;
-
+	int i = 3;
 	while (!menu)
 	{
+		Event event;
 		Vector2i mouseWindow = Mouse::getPosition(window);
 		Vector2f mysz = window.mapPixelToCoords(mouseWindow);
 		View view1 = window.getDefaultView();
 
-
-		if (Keyboard::isKeyPressed(Keyboard::Escape)) menu = true; // Wyjscie do menu
-
-		if (Keyboard::isKeyPressed(Keyboard::W))
+		while (window.pollEvent(event))
 		{
-			peoples.CreateHuman();
 
+			if (Keyboard::isKeyPressed(Keyboard::Escape)) menu = true; // Wyjscie do menu
+
+			if (event.type == Event::KeyPressed)
+			{
+				if (Keyboard::isKeyPressed(Keyboard::W))
+				{
+					//peoples.CreateHuman();
+					Node<SingleObject> * temp = trees.trees.head;
+					trees.trees.addNode(SingleObject(6,50, 82,i++ * 100, i * 150));
+					/*while (temp->next != nullptr)
+					{
+						temp = temp->next;
+					}
+					temp->object.setPosition(i++ * 100, i * 150);
+					*/
+					//peoples.listOfPeople.deleteNode(i++);
+				}
+				if (Keyboard::isKeyPressed(Keyboard::X))
+				{
+					Node<SingleObject> * temp = trees.trees.head;
+					while (temp != NULL)
+					{
+						cout << temp->which << " ";
+						cout << temp->object.pos_x << " " << temp->object.pos_y << endl;
+						temp = temp->next;
+					}
+				}
+			}
 		}
-
-		/*else if (event.type == Event::KeyReleased)
-		{
-		if (event.key.code == Keyboard::W)
-		player.stop();
-		}*/
 		if (Keyboard::isKeyPressed)
 		{
 			MoveCamera(window, view1);
@@ -95,6 +114,7 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		peoples.update(mysz); //aktualizacja wszystkich
 		CheckCollision();
 		Display(window);
+		
 	}
 }
 
@@ -114,30 +134,30 @@ void Engine::MoveCamera(RenderWindow & window, View & view1)
 	static float viewY = 0;
 	if (Keyboard::isKeyPressed(Keyboard::Up))
 	{
-		viewY -= 10;
+		viewY -= 2;
 		view1.move(viewX, viewY);
-		UpdatePosition(0, -1, 10);
+		UpdatePosition(0, -1, 2);
 		window.setView(view1);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Down))
 	{
-		viewY += 10;
+		viewY += 2;
 		view1.move(viewX, viewY);
-		UpdatePosition(0, 1, 10);
+		UpdatePosition(0, 1, 2);
 		window.setView(view1);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
-		viewX -= 10;
+		viewX -= 2;
 		view1.move(viewX, viewY);
-		UpdatePosition(-1, 0, 10);
+		UpdatePosition(-1, 0, 2);
 		window.setView(view1);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		viewX += 10;
+		viewX += 2;
 		view1.move(viewX, viewY);
-		UpdatePosition(1, 0, 10);
+		UpdatePosition(1, 0, 2);
 		window.setView(view1);
 	}
 }
@@ -150,22 +170,36 @@ void Engine::CheckCollision()
 	while (temp)
 	{
 		int i = 0;
+		if (temp == NULL)
+		{
+			break;
+		}
 		FloatRect boxTree(temp->object.collider.getGlobalBounds());
 		Node <Human> * tmpHum = peoples.listOfPeople.head;
 		while (tmpHum)
 		{
 			if (tmpHum->object.status != Human::STOJ)
 			{
+				
 				FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());
 				if (box1.intersects(boxTree))
 				{
 					if (tmpHum->object.inStage == true)
 					{
-						cout << "Kolizja" << endl;
+						//cout << "Kolizja" << endl;
+						tmpHum->object.AI->tmp = temp;
+						trees.trees.deleteNode(temp->which);
+						temp = temp->next;
+				
 						tmpHum->object.stoped = true;
 						tmpHum->object.stop();
+						
+						return;
+					
 					}
 				}
+				
+				//if(tmpHum->object.getPosition().x >)
 
 			}
 			tmpHum = tmpHum->next;

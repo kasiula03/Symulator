@@ -229,6 +229,12 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+# Another
+*.obj
+*.pdb
+*.log
+*.tlog
+
 # Obrazy
 *.png
 *.jpg

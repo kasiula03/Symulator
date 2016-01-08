@@ -6,6 +6,37 @@ using namespace sf;
 
 string temp;
 
+TextureLoader SingleObject::textures;
+
+//Utworzenie pojedynczego obiektu
+SingleObject::SingleObject(int which, int width, int height,int posx, int posy)
+{
+	sprite.setTexture(textures[which]);
+	sprite.setTextureRect(IntRect(0, 0, width, height));
+	sprite.setPosition(posx, posy);
+
+	collider.setSize(Vector2f(width, height));
+
+	collider.setFillColor(sf::Color(255, 232, 54, 120));
+	//collider.setOrigin(32, 32);
+	collider.setPosition(posx, posy);
+}
+//Ustawienie pozycji
+void SingleObject::setPosition(int x, int y)
+{
+	sprite.setPosition(x, y);
+	collider.setPosition(x, y);
+	pos_x = x;
+	pos_y = y;
+}
+void SingleObject::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+	states.transform *= getTransform();
+
+	target.draw(sprite);
+	//target.draw(collider);
+}
+
 void GlobalClock::SetSingleText(Text & tekst, string strText, float x, float y)
 {
 	tekst.setString(strText);

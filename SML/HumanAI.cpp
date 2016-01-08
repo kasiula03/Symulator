@@ -3,10 +3,12 @@
 
 using namespace std;
 
+
 HumanAI::HumanAI()
 {
 	//cout << "Tworze AI" << endl;
 	state = Nothing;
+	tmp = NULL;
 }
 
 HumanAI::~HumanAI()
@@ -22,7 +24,8 @@ void HumanAI::MainCore()
 	}
 	else if (state == CuttingTree)
 	{
-
+		
+		state = Anythingelse;
 	}
 	else if (state == Foraging)
 	{
@@ -35,7 +38,10 @@ void HumanAI::MainCore()
 	else if (state == Walking)
 	{
 		if (thisOne->stoped == true)
+		{
+			if (tmp != NULL) state = CuttingTree; //jezeli dotarl do drzewa, to wtedy 
 			state = Anythingelse;
+		}
 	}
 	else if (state == Anythingelse)
 	{
@@ -46,10 +52,6 @@ void HumanAI::MainCore()
 		Vector2f vec(rand() % 1000, rand() % 1200);
 		thisOne->inStage = true;
 		thisOne->goToPoint(vec);
-		//else thisOne->goToPoint(-vec);
 		state = Walking;
 	}
-	//if (state == Anythingelse) cout << "Jest ";
-	//cout << thisOne->stats.surename << " ";
-	
 }
