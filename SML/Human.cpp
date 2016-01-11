@@ -15,42 +15,12 @@ TextureLoader Human::allTextures;
 
 Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja postaci
 {
-	
+	//Human();
 	this->stats = HumanStatistic(_name, _lname, _gender, _age);
 	if(_gender == "Kobieta") sprite.setTexture(allTextures.textures[0]);
 	else sprite.setTexture(allTextures.textures[1]);
-	sprite.setTextureRect(IntRect(0, 0, 64, 64));
-	sprite.setOrigin(32, 32);
-
-	ID = 0;
-
-	AI = new HumanAI;
-	AI->thisOne = this;
-	AI->Created = true;
 	
-	stoped = false;
-	visibleStat = false;
-	status = STOJ;
-	direction = Back;
-	frame = 0;
-	speed = 0.5;
-	rotated = false;
-	inStage = false;
-	direc = 0;
-	sprite.setPosition(1366 / 2, 768 / 2);
-	anim_clock.restart();
-
-	HumanColision.setSize(Vector2f(50, 60));
-
-	HumanColision.setFillColor(sf::Color(255, 232, 54, 120));
-	HumanColision.setOrigin(25, 30);
-	HumanColision.setPosition(1366/2, 768/2);
-	
-	EyesShot.setSize(Vector2f(400,600));
-	EyesShot.setFillColor(sf::Color(255, 232, 54, 120));
-	//EyesShot.setOrigin(125, (768/2) + 230 );
-	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
-	EyesShot.setPosition(1366 / 2, 768 / 2);
+	setBasicParam();
 	
 }
 Human::Human()
@@ -70,13 +40,20 @@ Human::Human()
 		this->stats = HumanStatistic(names.namesWomen[i], names.SureNames[j], "Mezczyzna", _age);
 		sprite.setTexture(allTextures.textures[1]);
 	}
+
+	setBasicParam();
+	
+}
+
+void Human::setBasicParam()
+{
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 	sprite.setOrigin(32, 32);
-	
+
 	AI = new HumanAI;
 	AI->thisOne = this;
 	AI->Created = true;
-
+	EQ = new HumanEquipment;
 
 	ID = 0;
 
@@ -103,7 +80,7 @@ Human::Human()
 	//EyesShot.setOrigin(125, (768/2) + 230 );
 	EyesShot.setOrigin(EyesShot.getSize().x / 2, EyesShot.getSize().y + 10);
 	EyesShot.setPosition(1366 / 2, 768 / 2);
-	
+
 }
 
 Human & Human::operator=(Human const & tmp)
@@ -127,6 +104,10 @@ Human & Human::operator=(Human const & tmp)
 	this->vy = tmp.vy;
 
 	this->AI->thisOne = this;
+	this->AI->tmp = NULL;
+	//this->EQ->berries = tmp.EQ->berries;
+	//this->EQ->woods = tmp.EQ->woods;
+	this->EQ = this->EQ;
 
 	return *this;
 }

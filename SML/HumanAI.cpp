@@ -1,8 +1,9 @@
 #include "HumanAI.h"
 #include <iostream>
-
+#include "Engine.h"
 using namespace std;
 
+Engine * HumanAI::engine;
 
 HumanAI::HumanAI()
 {
@@ -24,7 +25,8 @@ void HumanAI::MainCore()
 	}
 	else if (state == CuttingTree)
 	{
-		
+		thisOne->EQ->woods += 1;
+		cout << thisOne->EQ->woods << " ";
 		state = Anythingelse;
 	}
 	else if (state == Foraging)
@@ -39,8 +41,13 @@ void HumanAI::MainCore()
 	{
 		if (thisOne->stoped == true)
 		{
-			if (tmp != NULL) state = CuttingTree; //jezeli dotarl do drzewa, to wtedy 
-			state = Anythingelse;
+			
+			if (tmp != nullptr)
+			{
+				state = CuttingTree; //jezeli dotarl do drzewa, to wtedy 
+
+			}
+			//state = Anythingelse;
 		}
 	}
 	else if (state == Anythingelse)
@@ -49,7 +56,7 @@ void HumanAI::MainCore()
 	}
 	else if (state == Nothing)
 	{
-		Vector2f vec(rand() % 1000, rand() % 1200);
+		Vector2f vec(rand() % 4000, rand() % 3000);
 		thisOne->inStage = true;
 		thisOne->goToPoint(vec);
 		state = Walking;

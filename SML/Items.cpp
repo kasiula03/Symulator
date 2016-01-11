@@ -16,10 +16,12 @@ Trees::Trees(int x)
 	temp = trees.head;
 	while (temp)
 	{
+		a = (rand() % 3800) - 300;
+		b = (rand() % 3000) - 400;
 		temp->object.collider.setScale(0.5, 0.1);
 		//temp->object.collider.setSize(Vector2f(25, 41));
-		temp->object.setPosition(++a * 100, ++b * 100);
-		temp->object.collider.setPosition((a * 100) + 15, (b * 100) + 50);
+		temp->object.setPosition(a,b);
+		temp->object.collider.setPosition(a + 15, b + 50);
 		temp->object.isWalkable = false;
 		temp = temp->next;
 	}

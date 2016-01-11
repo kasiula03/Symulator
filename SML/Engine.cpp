@@ -15,7 +15,8 @@ Engine::Engine(sf::RenderWindow &win)
 		return;
 	}
 	peoples = GlobalPopulation(3);
-	trees = Trees(8);
+	trees = Trees(200);
+	peoples.listOfPeople.head->object.AI->engine = this;
 	runEngine(win);
 
 }
@@ -58,9 +59,9 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 			{
 				if (Keyboard::isKeyPressed(Keyboard::W))
 				{
-					//peoples.CreateHuman();
-					Node<SingleObject> * temp = trees.trees.head;
-					trees.trees.addNode(SingleObject(6,50, 82,i++ * 100, i * 150));
+					peoples.CreateHuman(Human("Katarzyna","Nalepka", "Kobieta",95));
+					//Node<SingleObject> * temp = trees.trees.head;
+					//trees.trees.addNode(SingleObject(6,50, 82,i++ * 100, i * 150));
 					/*while (temp->next != nullptr)
 					{
 						temp = temp->next;
@@ -94,14 +95,14 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 			if (Keyboard::isKeyPressed(Keyboard::Num2))
 			{
 				peoples.listOfPeople.head->object.speed = tempSpeed;
-				g_clock.timeSpeed = 10;
-				peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
+				g_clock.timeSpeed = 100;
+				peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed/10;
 			}
 			if (Keyboard::isKeyPressed(Keyboard::Num3))
 			{
 				peoples.listOfPeople.head->object.speed = tempSpeed;
-				g_clock.timeSpeed = 50;
-				peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed;
+				g_clock.timeSpeed = 500;
+				peoples.listOfPeople.head->object.speed *= g_clock.timeSpeed/10;
 			}
 		}
 
@@ -188,7 +189,7 @@ void Engine::CheckCollision()
 					{
 						//cout << "Kolizja" << endl;
 						tmpHum->object.AI->tmp = temp;
-						trees.trees.deleteNode(temp->which);
+						destroyTree(temp->which);
 						temp = temp->next;
 				
 						tmpHum->object.stoped = true;
@@ -207,4 +208,9 @@ void Engine::CheckCollision()
 		temp = temp->next;
 
 	}
+}
+
+void Engine::destroyTree(int a)
+{
+	trees.trees.deleteNode(a);
 }

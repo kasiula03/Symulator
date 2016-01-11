@@ -72,7 +72,7 @@ GlobalClock::~GlobalClock()
 }
 bool GlobalClock::UpdateTime() // Mechanizm zegara
 {
-	seconds += (0.001 * timeSpeed);
+	seconds += (0.007 * timeSpeed);
 	if (seconds > 60)
 	{
 		minutes++;

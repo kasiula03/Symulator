@@ -27,9 +27,9 @@ GlobalPopulation::GlobalPopulation(int x)
 	}
 
 }
-void GlobalPopulation::CreateHuman()
+void GlobalPopulation::CreateHuman(Human & hum)
 {
-	listOfPeople.addNode(Human());
+	listOfPeople.addNode(Human(hum));
 	Node<Human> * temp = listOfPeople.head;
 	while (temp->next)
 	{

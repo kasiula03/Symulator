@@ -16,6 +16,8 @@ class HumanAI
 	void MainCore();
 
 	Node <SingleObject> * tmp;
+	static Engine * engine;
+
 	Status state;
 	bool Created;
 	

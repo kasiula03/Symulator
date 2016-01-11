@@ -126,6 +126,7 @@
     <ClCompile Include="GlobalObjects.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="HumanAI.cpp" />
+    <ClCompile Include="HumanEquipment.cpp" />
     <ClCompile Include="HumanStatistic.cpp" />
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="main.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GlobalObjects.h" />
     <ClInclude Include="HumanAI.h" />
+    <ClInclude Include="HumanEquipment.h" />
     <ClInclude Include="HumanStatistic.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Ground.h" />

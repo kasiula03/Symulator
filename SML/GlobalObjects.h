@@ -2,8 +2,8 @@
 
 #include <SFML\Graphics.hpp>
 #include <Windows.h>
-#include "Human.h"
 #include <string>
+#include "TextureLoader.h"
 
 using namespace std;
 using namespace sf;
@@ -135,9 +135,7 @@ public:
 
 				if (tempN->next->next == NULL)
 				{
-					/*helper = tempN->next;
-					tempN->next == NULL;
-					delete helper;*/
+					
 					deleteLast();
 					
 				}

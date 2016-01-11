@@ -14,12 +14,14 @@ using namespace sf;
 
 class Engine
 {
+	friend class HumanAI;
 public:
 	Engine(RenderWindow &win);
 	~Engine(void);
 
 	void runEngine(RenderWindow &window);
 	void UpdatePosition(int, int, float);
+	void destroyTree(int);
 	
 private:
 	Ground ground;

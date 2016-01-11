@@ -5,6 +5,7 @@
 #include "HumanStatistic.h"
 #include "TextureLoader.h"
 #include "HumanAI.h"
+#include "HumanEquipment.h"
 using namespace std;
 
 
@@ -39,6 +40,7 @@ protected:
 
 private:
 	HumanAI * AI;
+	HumanEquipment * EQ;
 
 	static TextureLoader allTextures;
 	sf::Sprite sprite;
@@ -61,6 +63,7 @@ private:
 	sf::Vector2f targetToGo; //Cel
 
 	sf::Clock anim_clock;
+	void setBasicParam();
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
 
