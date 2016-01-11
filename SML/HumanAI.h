@@ -20,5 +20,7 @@ class HumanAI
 
 	Status state;
 	bool Created;
+
+	bool Campfire;
 	
 };

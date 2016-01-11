@@ -12,6 +12,7 @@ TextureLoader::TextureLoader()
 	textures[4].loadFromFile("data//images//dirt2.png");
 	textures[5].loadFromFile("data//images//mapa.png");
 	textures[6].loadFromFile("data//images//tree1.png");
+	textures[7].loadFromFile("data//images//campfire1.png");
 }
 const Texture & TextureLoader::operator[](int el)
 {

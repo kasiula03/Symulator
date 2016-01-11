@@ -39,3 +39,15 @@ void Trees::draw(sf::RenderTarget &target, sf::RenderStates states) const
 		temp = temp->next;
 	}
 }
+
+void SomeItems::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+	states.transform *= getTransform();
+	Node<SingleObject> * temp = someItems.head;
+	while (temp)
+	{
+		if (temp->which > 0) target.draw(temp->object);
+		else break;
+		temp = temp->next;
+	}
+}

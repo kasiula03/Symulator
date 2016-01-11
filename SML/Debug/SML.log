@@ -1,19 +1,4 @@
-﻿  Human.cpp
-e:\git\symulator\sml\human.cpp(204): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-e:\git\symulator\sml\human.cpp(205): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-e:\git\symulator\sml\human.cpp(237): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-e:\git\symulator\sml\human.cpp(239): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
-  HumanAI.cpp
-e:\git\symulator\sml\humanai.cpp(59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Items.cpp
-  GlobalObjects.cpp
-  main.cpp
-  Population.cpp
-  HumanStatistic.cpp
-  Game.cpp
-  Engine.cpp
+﻿  HumanAI.cpp
+e:\git\symulator\sml\humanai.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+e:\git\symulator\sml\humanai.cpp(72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SML.vcxproj -> E:\Git\Symulator\Debug\Symulator.exe

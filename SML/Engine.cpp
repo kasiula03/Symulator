@@ -125,6 +125,7 @@ void Engine::Display(RenderWindow & window)
 	window.draw(ground);
 	window.draw(peoples);
 	window.draw(trees);
+	window.draw(items);
 	window.draw(g_clock);
 	window.draw(g_data);
 	window.display();

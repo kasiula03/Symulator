@@ -15,3 +15,10 @@ public:
 	Trees(int=0);
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };
+
+class SomeItems : public sf::Drawable, sf::Transformable
+{
+public:
+	list<SingleObject> someItems;
+	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+};

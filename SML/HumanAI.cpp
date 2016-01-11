@@ -26,8 +26,14 @@ void HumanAI::MainCore()
 	else if (state == CuttingTree)
 	{
 		thisOne->EQ->woods += 1;
-		cout << thisOne->EQ->woods << " ";
-		state = Anythingelse;
+		if (thisOne->EQ->woods > 3)
+		{
+			state = Building;
+		}
+		else
+		{
+			state = Anythingelse;
+		}
 	}
 	else if (state == Foraging)
 	{
@@ -35,7 +41,11 @@ void HumanAI::MainCore()
 	}
 	else if (state == Building)
 	{
-
+		cout << "Tworze ognisko" << endl;
+		Campfire = true;
+		engine->items.someItems.addNode(SingleObject(7,32,32,thisOne->getPosition().x,thisOne->getPosition().y));
+		thisOne->EQ->woods = 0;
+		state = Anythingelse;
 	}
 	else if (state == Walking)
 	{
@@ -47,7 +57,10 @@ void HumanAI::MainCore()
 				state = CuttingTree; //jezeli dotarl do drzewa, to wtedy 
 
 			}
-			//state = Anythingelse;
+			else
+			{
+				state = Anythingelse;
+			}
 		}
 	}
 	else if (state == Anythingelse)

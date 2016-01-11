@@ -30,6 +30,7 @@ private:
 	GlobalData g_data;
 	Font font;
 	GlobalPopulation peoples;
+	SomeItems items;
 	void Display(RenderWindow &);
 	void MoveCamera(RenderWindow &, View &);
 	void CheckCollision();
