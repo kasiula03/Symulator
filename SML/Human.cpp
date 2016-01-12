@@ -126,7 +126,7 @@ void Human::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
 
-	//target.draw(EyesShot);
+	target.draw(EyesShot);
 	target.draw(sprite);
 	//target.draw(HumanColision);
 	if (visibleStat == true)

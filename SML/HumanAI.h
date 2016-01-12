@@ -20,7 +20,15 @@ class HumanAI
 
 	Status state;
 	bool Created;
+	Vector2f FoundTarget;
+
+	//Stworzone obiekty
 
 	bool Campfire;
+	bool House;
+
+	//Pozycje stworzonych obiektow
+	Vector2i PosCampfire;
+	Vector2i PosHouse;
 	
 };

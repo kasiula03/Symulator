@@ -9,6 +9,7 @@ class HumanEquipment
 	friend class HumanAI;
 
 	int woods;
+	int saplings;
 	int berries;
 
 	HumanEquipment();

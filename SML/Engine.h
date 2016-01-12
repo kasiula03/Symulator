@@ -33,5 +33,7 @@ private:
 	SomeItems items;
 	void Display(RenderWindow &);
 	void MoveCamera(RenderWindow &, View &);
-	void CheckCollision();
+	void CheckCollision(); //Ogolna kolizja
+	bool CheckCollision(Human *); //Kolizja szczegolowa, jednego czlowieka
+	bool CheckHumanEyesShot(Human *);
 };

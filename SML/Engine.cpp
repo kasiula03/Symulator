@@ -14,8 +14,8 @@ Engine::Engine(sf::RenderWindow &win)
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
 		return;
 	}
-	peoples = GlobalPopulation(3);
-	trees = Trees(200);
+	peoples = GlobalPopulation(5);
+	trees = Trees(150);
 	peoples.listOfPeople.head->object.AI->engine = this;
 	runEngine(win);
 
@@ -60,6 +60,9 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 				if (Keyboard::isKeyPressed(Keyboard::W))
 				{
 					peoples.CreateHuman(Human("Katarzyna","Nalepka", "Kobieta",95));
+
+					//cout << peoples.listOfPeople.head->object.AI->PosCampfire.x << "\t" << peoples.listOfPeople.head->object.AI->PosCampfire.y << endl;
+
 					//Node<SingleObject> * temp = trees.trees.head;
 					//trees.trees.addNode(SingleObject(6,50, 82,i++ * 100, i * 150));
 					/*while (temp->next != nullptr)
@@ -166,12 +169,11 @@ void Engine::MoveCamera(RenderWindow & window, View & view1)
 void Engine::CheckCollision()
 {
 
-	int i = 0;
 	Node <SingleObject> * temp = this->trees.trees.head;
 
 	while (temp)
 	{
-		int i = 0;
+		
 		if (temp == NULL)
 		{
 			break;
@@ -208,6 +210,50 @@ void Engine::CheckCollision()
 		}
 		temp = temp->next;
 
+	}
+}
+
+bool Engine::CheckCollision(Human * hum)
+{
+	Node <SingleObject> * temp = this->trees.trees.head;
+
+	while (temp)
+	{
+		FloatRect boxTree(temp->object.collider.getGlobalBounds());
+
+		FloatRect box1(hum->HumanColision.getGlobalBounds());
+		if (box1.intersects(boxTree)) return true;
+		else temp = temp->next;
+	}
+	Node <SingleObject> * tempI = this->items.someItems.head;
+
+	while (temp)
+	{
+		FloatRect boxItems(tempI->object.collider.getGlobalBounds());
+
+		FloatRect box1(hum->HumanColision.getGlobalBounds());
+		if (box1.intersects(boxItems)) return true;
+		else tempI = tempI->next;
+	}
+	return false;
+}
+
+bool Engine::CheckHumanEyesShot(Human * hum)
+{
+	Node <SingleObject> * temp = this->trees.trees.head;
+
+	while (temp)
+	{
+		FloatRect boxTree(temp->object.collider.getGlobalBounds());
+
+		FloatRect box1(hum->EyesShot.getGlobalBounds());
+		if (box1.intersects(boxTree))
+		{
+			hum->AI->FoundTarget.x = temp->object.pos_x;
+			hum->AI->FoundTarget.y = temp->object.pos_y;
+			return true;
+		}
+		else temp = temp->next;
 	}
 }
 
