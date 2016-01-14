@@ -77,6 +77,7 @@ void HumanAI::MainCore()
 			{
 				if(ObjectsTag == "Tree") state = CuttingTree; //jezeli dotarl do drzewa, to wtedy 
 				else if (ObjectsTag == "Berry") state = Foraging;
+				else state = Anythingelse;
 			}
 			else
 			{
@@ -93,19 +94,27 @@ void HumanAI::MainCore()
 			thisOne->goToPoint(FoundTarget);
 			state = Walking;
 		}*/
-		int chance = rand() % 10;
+
+
+		int chance = rand() % 15;
+
+		//Szansa na zasadzenie drzewa
 		if (chance == 0)
 		{
-			if (thisOne->EQ->saplings != 0)
+			if (!thisOne->HumanColision.getGlobalBounds().intersects(FloatRect(Vector2f(PosHouse.x,30),Vector2f(PosHouse.y,30))))
 			{
-				cout << "Sadze! " << thisOne->getPosition().x << " " << thisOne->getPosition().y << endl;
-				thisOne->EQ->saplings -= 1;
-				engine->trees.trees.addNode(SingleObject(6, 50, 82));
-				Node <SingleObject> * temp = engine->trees.trees.head;
-				while (temp->next) temp = temp->next;
-				temp->object.setPosition(thisOne->getPosition().x + 60, thisOne->getPosition().y + 60);
+				if (thisOne->EQ->saplings != 0)
+				{
+					cout << "Sadze! " << thisOne->getPosition().x << " " << thisOne->getPosition().y << endl;
+					thisOne->EQ->saplings -= 1;
+					engine->trees.trees.addNode(SingleObject(6, 50, 82));
+					Node <SingleObject> * temp = engine->trees.trees.head;
+					while (temp->next) temp = temp->next;
+					temp->object.setPosition(thisOne->getPosition().x + 60, thisOne->getPosition().y + 60);
+				}
 			}
 		}
+		//Powrot do domu po zmroku
 		if (House && (engine->g_clock.hour > 23 || engine->g_clock.hour < 6))
 		{
 			Vector2f vek(PosHouse.x, PosHouse.y);

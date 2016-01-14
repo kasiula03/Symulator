@@ -14,7 +14,7 @@ Engine::Engine(sf::RenderWindow &win)
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
 		return;
 	}
-	peoples = GlobalPopulation(1);
+	peoples = GlobalPopulation(6);
 	trees = Trees(150);
 	berries = Berries(50);
 	peoples.listOfPeople.head->object.AI->engine = this;
@@ -67,34 +67,15 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 				{
 					peoples.CreateHuman(Human("Katarzyna","Nalepka", "Kobieta",95));
 
-					//cout << peoples.listOfPeople.head->object.AI->PosCampfire.x << "\t" << peoples.listOfPeople.head->object.AI->PosCampfire.y << endl;
-
-					//Node<SingleObject> * temp = trees.trees.head;
-					//trees.trees.addNode(SingleObject(6,50, 82,i++ * 100, i * 150));
-					/*while (temp->next != nullptr)
-					{
-						temp = temp->next;
-					}
-					temp->object.setPosition(i++ * 100, i * 150);
-					*/
-					//peoples.listOfPeople.deleteNode(i++);
 				}
-				if (Keyboard::isKeyPressed(Keyboard::X))
-				{
-					Node<SingleObject> * temp = trees.trees.head;
-					while (temp != NULL)
-					{
-						cout << temp->which << " ";
-						cout << temp->object.pos_x << " " << temp->object.pos_y << endl;
-						temp = temp->next;
-					}
-				}
+				
 			}
 		}
 		if (Keyboard::isKeyPressed)
 		{
 			MoveCamera(window, view1);
 
+			//Przyspieszanie czasu
 			if (Keyboard::isKeyPressed(Keyboard::Num1))
 			{
 				g_clock.timeSpeed = 1;
@@ -146,6 +127,8 @@ void Engine::Display(RenderWindow & window)
 
 	window.display();
 }
+
+//Poruszanie kamera
 void Engine::MoveCamera(RenderWindow & window, View & view1)
 {
 	static float viewX = 0;
@@ -179,6 +162,8 @@ void Engine::MoveCamera(RenderWindow & window, View & view1)
 		window.setView(view1);
 	}
 }
+
+//Ogolna kolizja
 void Engine::CheckCollision()
 {
 
@@ -213,7 +198,6 @@ void Engine::CheckCollision()
 						tmpHum->object.stop();
 
 						return;
-
 					}
 				}
 
@@ -269,6 +253,8 @@ void Engine::CheckCollision()
 	}
 }
 
+
+//Sprawdzenie kolizji czlowieka
 bool Engine::CheckCollision(Human * hum)
 {
 	Node <SingleObject> * temp = this->trees.trees.head;
@@ -294,6 +280,7 @@ bool Engine::CheckCollision(Human * hum)
 	return false;
 }
 
+//Sprawdzenie kolizji z polem widzenia czlowieka
 bool Engine::CheckHumanEyesShot(Human * hum)
 {
 	Node <SingleObject> * temp = this->trees.trees.head;

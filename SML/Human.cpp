@@ -15,7 +15,6 @@ TextureLoader Human::allTextures;
 
 Human::Human(string _name,string _lname,string _gender,int _age) //Inicjalizacja postaci
 {
-	//Human();
 	this->stats = HumanStatistic(_name, _lname, _gender, _age);
 	if(_gender == "Kobieta") sprite.setTexture(allTextures.textures[0]);
 	else sprite.setTexture(allTextures.textures[1]);
@@ -37,7 +36,7 @@ Human::Human()
 	}
 	else
 	{
-		this->stats = HumanStatistic(names.namesWomen[i], names.SureNames[j], "Mezczyzna", _age);
+		this->stats = HumanStatistic(names.namesMen[i], names.SureNames[j], "Mezczyzna", _age);
 		sprite.setTexture(allTextures.textures[1]);
 	}
 

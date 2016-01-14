@@ -17,6 +17,7 @@ class HumanAI
 
 	Node <SingleObject> * tmp;
 	string ObjectsTag;
+
 	static Engine * engine;
 
 	Status state;

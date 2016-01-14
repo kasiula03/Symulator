@@ -73,6 +73,7 @@ public:
 	listOfNames();
 	string namesWomen[11] = { "Sylwia","Klaudia","Monika","Agata","Pola","Gabriela","Justyna","Ola","Katherine","Monika","Urszula" };
 	string SureNames[9] = { "Nowak","Kowal","Burzynski","Hanusiak","Bogusz","Jaworski","Typo","Sarmanczyk","Nacz" };
+	string namesMen[11] = { "Rafal","Piotr","Tomek","Adam","Karol","Cezary","Daniel","Pawel","Filip","Adrian", "Grzegorz" };
 };
 
 template<typename _typ> class Node
