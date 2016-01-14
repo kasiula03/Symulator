@@ -4,7 +4,7 @@ Texture * TextureLoader::textures;
 
 TextureLoader::TextureLoader()
 {
-	textures = new Texture[10];
+	textures = new Texture[11];
 	textures[0].loadFromFile("data//images//princess.png");
 	textures[1].loadFromFile("data//images//male1.png");
 	textures[2].loadFromFile("data//images//ground.png");
@@ -14,6 +14,8 @@ TextureLoader::TextureLoader()
 	textures[6].loadFromFile("data//images//tree1.png");
 	textures[7].loadFromFile("data//images//campfire1.png");
 	textures[8].loadFromFile("data//images//house.png");
+	textures[9].loadFromFile("data//images//Dark.png");
+	textures[10].loadFromFile("data//images//Berries.png");
 }
 const Texture & TextureLoader::operator[](int el)
 {

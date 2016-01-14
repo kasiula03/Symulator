@@ -15,10 +15,13 @@ class SingleObject : public sf::Drawable, sf::Transformable
 {
 	friend class Engine;
 	friend class Trees;
+	friend class Berries;
 	sf::Sprite sprite;
 	sf::RectangleShape collider;
 	static TextureLoader textures;
 public:
+
+	string tag;
 
 	float pos_x, pos_y;
 	SingleObject(int = 0, int = 0, int = 0,int = 0, int = 0);

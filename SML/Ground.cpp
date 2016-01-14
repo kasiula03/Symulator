@@ -49,6 +49,8 @@ Ground::Ground()
 	sprite.setTexture(textures[5]);
 	sprite.setTextureRect(IntRect(0, 0, 4000, 3000));
 	sprite.setPosition(-500, -300);
+
+	
 }
 Ground::~Ground()
 {
@@ -58,13 +60,6 @@ void Ground::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
 
-	/*for (int i = 0; i < width; i++)
-	{
-		for (int j = 0; j < height; j++)
-		{
-			target.draw(map[i][j]);
-		}
-	}*/
 	target.draw(sprite);
 }
 

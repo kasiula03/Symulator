@@ -14,9 +14,15 @@ Engine::Engine(sf::RenderWindow &win)
 		MessageBox(NULL, "Fond not found", "ERROR", NULL);
 		return;
 	}
-	peoples = GlobalPopulation(5);
+	peoples = GlobalPopulation(1);
 	trees = Trees(150);
+	berries = Berries(50);
 	peoples.listOfPeople.head->object.AI->engine = this;
+	berries.engine = this;
+	shadow.setTexture(textures[9]);
+	shadow.setTextureRect(IntRect(0, 0, 4000, 3000));
+	shadow.setPosition(-500, -300);
+	Sun = false;
 	runEngine(win);
 
 }
@@ -114,6 +120,10 @@ void Engine::runEngine(sf::RenderWindow &window) //Glowna petla gry
 		{
 			g_data.UpdateData();
 		}
+		if (g_clock.hour > 22 || g_clock.hour < 6)
+			Sun = false;
+		else
+			Sun = true;
 
 		peoples.update(mysz); //aktualizacja wszystkich
 		CheckCollision();
@@ -128,9 +138,12 @@ void Engine::Display(RenderWindow & window)
 	window.draw(ground);
 	window.draw(peoples);
 	window.draw(trees);
+	window.draw(berries);
 	window.draw(items);
+	if (!Sun) window.draw(shadow);
 	window.draw(g_clock);
 	window.draw(g_data);
+
 	window.display();
 }
 void Engine::MoveCamera(RenderWindow & window, View & view1)
@@ -173,7 +186,7 @@ void Engine::CheckCollision()
 
 	while (temp)
 	{
-		
+
 		if (temp == NULL)
 		{
 			break;
@@ -184,7 +197,7 @@ void Engine::CheckCollision()
 		{
 			if (tmpHum->object.status != Human::STOJ)
 			{
-				
+
 				FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());
 				if (box1.intersects(boxTree))
 				{
@@ -192,24 +205,67 @@ void Engine::CheckCollision()
 					{
 						//cout << "Kolizja" << endl;
 						tmpHum->object.AI->tmp = temp;
+						tmpHum->object.AI->ObjectsTag = temp->object.tag;
 						destroyTree(temp->which);
 						temp = temp->next;
-				
+
 						tmpHum->object.stoped = true;
 						tmpHum->object.stop();
-						
+
 						return;
-					
+
 					}
 				}
-				
-				//if(tmpHum->object.getPosition().x >)
+
+				if (tmpHum->object.getPosition().x < -500 || tmpHum->object.getPosition().x > 3500 || tmpHum->object.getPosition().y < -400 || tmpHum->object.getPosition().y > 2600)
+				{
+					cout << "Granica! " << endl;
+					tmpHum->object.stoped = true;
+					tmpHum->object.stop();
+
+					return;
+				}
 
 			}
 			tmpHum = tmpHum->next;
 		}
 		temp = temp->next;
 
+	}
+
+	Node <SingleObject> * tempB = this->berries.berries.head;
+	while (tempB)
+	{
+		FloatRect boxBerry(tempB->object.collider.getGlobalBounds());
+		Node <Human> * tmpHum = peoples.listOfPeople.head;
+		while (tmpHum)
+		{
+			if (tmpHum->object.status != Human::STOJ)
+			{
+
+				FloatRect box1(tmpHum->object.HumanColision.getGlobalBounds());
+				if (box1.intersects(boxBerry))
+				{
+					if (tmpHum->object.inStage == true)
+					{
+						//cout << "Jagody" << endl;
+						tmpHum->object.AI->tmp = tempB;
+						tmpHum->object.AI->ObjectsTag = tempB->object.tag;
+						tempB->object.sprite.setTextureRect(IntRect(32, 0, 32, 38));
+						//destroyTree(temp->which);
+						tempB = tempB->next;
+
+						tmpHum->object.stoped = true;
+						tmpHum->object.stop();
+
+						return;
+
+					}
+				}
+			}
+			tmpHum = tmpHum->next;
+		}
+		tempB = tempB->next;
 	}
 }
 
@@ -255,6 +311,32 @@ bool Engine::CheckHumanEyesShot(Human * hum)
 		}
 		else temp = temp->next;
 	}
+	return false;
+}
+
+bool Engine::CheckCollision(Node<SingleObject> * tmp)
+{
+	Node <SingleObject> * temp = this->trees.trees.head;
+
+	while (temp)
+	{
+		FloatRect boxTree(temp->object.collider.getGlobalBounds());
+
+		FloatRect box1(tmp->object.collider.getGlobalBounds());
+		if (box1.intersects(boxTree)) return true;
+		else temp = temp->next;
+	}
+	Node <SingleObject> * tempI = this->berries.berries.head;
+	while (tempI)
+	{
+		FloatRect boxTree(tempI->object.collider.getGlobalBounds());
+
+		FloatRect box1(tmp->object.collider.getGlobalBounds());
+		if (box1.intersects(boxTree)) return true;
+		else tempI = tempI->next;
+	}
+	return false;
+
 }
 
 void Engine::destroyTree(int a)

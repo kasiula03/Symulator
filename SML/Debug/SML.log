@@ -1,13 +1,11 @@
 ﻿  HumanAI.cpp
-e:\git\symulator\sml\humanai.cpp(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\git\symulator\sml\humanai.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+e:\git\symulator\sml\humanai.cpp(54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 e:\git\symulator\sml\humanai.cpp(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-e:\git\symulator\sml\humanai.cpp(62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\git\symulator\sml\humanai.cpp(63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+e:\git\symulator\sml\humanai.cpp(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+e:\git\symulator\sml\humanai.cpp(63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 e:\git\symulator\sml\humanai.cpp(64): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-e:\git\symulator\sml\humanai.cpp(99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Engine.cpp
-e:\git\symulator\sml\engine.cpp(88): warning C4551: function call missing argument list
-  Generating Code...
-e:\git\symulator\sml\engine.cpp(259): warning C4715: 'Engine::CheckHumanEyesShot': not all control paths return a value
+e:\git\symulator\sml\humanai.cpp(65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+e:\git\symulator\sml\humanai.cpp(106): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+e:\git\symulator\sml\humanai.cpp(111): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\humanai.cpp(123): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SML.vcxproj -> E:\Git\Symulator\Debug\Symulator.exe

@@ -40,7 +40,8 @@ void HumanAI::MainCore()
 	}
 	else if (state == Foraging)
 	{
-
+		thisOne->EQ->berries += 1;
+		state = Anythingelse;
 	}
 	else if (state == Building)
 	{
@@ -72,9 +73,10 @@ void HumanAI::MainCore()
 		if (thisOne->stoped == true)
 		{
 			
-			if (tmp != nullptr)
+			if (tmp != NULL)
 			{
-				state = CuttingTree; //jezeli dotarl do drzewa, to wtedy 
+				if(ObjectsTag == "Tree") state = CuttingTree; //jezeli dotarl do drzewa, to wtedy 
+				else if (ObjectsTag == "Berry") state = Foraging;
 			}
 			else
 			{
@@ -84,14 +86,37 @@ void HumanAI::MainCore()
 	}
 	else if (state == Anythingelse)
 	{
-		if (engine->CheckHumanEyesShot(thisOne)) //Szukanie celu (drzewa)
+		/*if (engine->CheckHumanEyesShot(thisOne)) //Szukanie celu (drzewa)
 		{
 			cout << "Znalazlem drzewo ";
 			thisOne->inStage = true;
 			thisOne->goToPoint(FoundTarget);
 			state = Walking;
+		}*/
+		int chance = rand() % 10;
+		if (chance == 0)
+		{
+			if (thisOne->EQ->saplings != 0)
+			{
+				cout << "Sadze! " << thisOne->getPosition().x << " " << thisOne->getPosition().y << endl;
+				thisOne->EQ->saplings -= 1;
+				engine->trees.trees.addNode(SingleObject(6, 50, 82));
+				Node <SingleObject> * temp = engine->trees.trees.head;
+				while (temp->next) temp = temp->next;
+				temp->object.setPosition(thisOne->getPosition().x + 60, thisOne->getPosition().y + 60);
+			}
 		}
-		state = Nothing;
+		if (House && (engine->g_clock.hour > 23 || engine->g_clock.hour < 6))
+		{
+			Vector2f vek(PosHouse.x, PosHouse.y);
+			thisOne->inStage = true;
+			thisOne->goToPoint(vek);
+			state = Walking;
+		}
+		else
+		{
+			state = Nothing;
+		}
 	}
 	else if (state == Nothing)
 	{
