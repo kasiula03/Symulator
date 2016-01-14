@@ -20,7 +20,7 @@ public:
 	string surename, lastname, gender;
 	int age, id;
 private:
-	Text Surename, Lastname, Gender, Age, ID;
+	Text Surename, Lastname, Gender, Age;
 
 	//Statystyki
 	int hp, inteligence, strength;

@@ -45,7 +45,7 @@ void GlobalClock::SetSingleText(Text & tekst, string strText, float x, float y)
 	tekst.setPosition(x, y);
 }
 
-void GlobalClock::SetTexts() //Ustawienie czasu (i opcji jego przyspieszenia) w prawym gornym rogu
+void GlobalClock::SetTexts() //Ustawienie czasu 
 {
 	SetSingleText(textTime, "00:00:00", 1100, 20);
 

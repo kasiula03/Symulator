@@ -136,15 +136,14 @@ void Human::update(Vector2f mysz)
 {
 	if (HumanColision.getGlobalBounds().contains(mysz) && Mouse::isButtonPressed(Mouse::Left))
 	{
+		//Pokazanie statystyk
 		if (visibleStat == false)
 		{
 			stats.Surename.setPosition(HumanColision.getPosition());
 			stats.Lastname.setPosition(HumanColision.getPosition().x , HumanColision.getPosition().y + 25);
 			stats.Gender.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 50);
 			stats.Age.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 75);
-			stats.ID.setPosition(HumanColision.getPosition().x, HumanColision.getPosition().y + 100);
 			this->stats.id = ID;
-			this->stats.ID.setString(to_string(this->stats.id));
 			stats.background.setPosition(HumanColision.getPosition().x + 30,HumanColision.getPosition().y + 25);
 			visibleStat = true;
 		}
@@ -214,12 +213,12 @@ void Human::idz()
 
 }
 
-void Human::goToPoint(Vector2f Point)
+void Human::goToPoint(Vector2f Point) 
 {
 	//cout << "tak";
 	float distx, disty;
 	float temp;
-	if (inStage == false) return;
+	//if (inStage == false) return;
 	targetToGo = Point;
 	stoped = false;
 	

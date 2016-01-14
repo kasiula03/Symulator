@@ -49,12 +49,6 @@ HumanStatistic::HumanStatistic(string _name, string _lname, string _gender, int 
 	Age.setPosition(30, 10);
 	Age.setCharacterSize(20);
 
-	ID.setString(to_string(age));
-	ID.setStyle(Text::Bold);
-	ID.setFont(font);
-	ID.setPosition(30, 0);
-	ID.setCharacterSize(20);
-
 	if(lastname.length() > surename.length()) background.setSize(Vector2f(12 * lastname.length(),140));
 	else  background.setSize(Vector2f(12 * surename.length(), 140));
 	background.setFillColor(sf::Color(150, 75, 0, 255));
@@ -72,7 +66,4 @@ void HumanStatistic::draw(sf::RenderTarget &target, sf::RenderStates states) con
 	target.draw(Lastname);
 	target.draw(Gender);
 	target.draw(Age);
-	target.draw(ID);
-	
-
 }

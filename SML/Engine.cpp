@@ -18,7 +18,6 @@ Engine::Engine(sf::RenderWindow &win)
 	trees = Trees(150);
 	berries = Berries(50);
 	peoples.listOfPeople.head->object.AI->engine = this;
-	berries.engine = this;
 	shadow.setTexture(textures[9]);
 	shadow.setTextureRect(IntRect(0, 0, 4000, 3000));
 	shadow.setPosition(-500, -300);

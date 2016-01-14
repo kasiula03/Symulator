@@ -20,7 +20,6 @@ class Berries : public sf::Drawable, sf::Transformable
 	friend class Engine;
 	int x;
 public:
-	Engine * engine;
 	list<SingleObject> berries;
 	Berries(int = 0);
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;

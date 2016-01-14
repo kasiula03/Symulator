@@ -1,10 +1,17 @@
-﻿  Engine.cpp
-e:\git\symulator\sml\engine.cpp(74): warning C4551: function call missing argument list
+﻿  Population.cpp
+  Human.cpp
+e:\git\symulator\sml\human.cpp(202): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\git\symulator\sml\human.cpp(203): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\git\symulator\sml\human.cpp(235): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\git\symulator\sml\human.cpp(237): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  GlobalObjects.cpp
+e:\git\symulator\sml\globalobjects.cpp(16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\globalobjects.cpp(18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\globalobjects.cpp(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\globalobjects.cpp(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\globalobjects.cpp(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\globalobjects.cpp(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\globalobjects.cpp(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+e:\git\symulator\sml\globalobjects.cpp(75): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Items.cpp
-  HumanStatistic.cpp
-  HumanAI.cpp
-  Game.cpp
   SML.vcxproj -> E:\Git\Symulator\Debug\Symulator.exe
